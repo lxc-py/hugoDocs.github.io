@@ -1,0 +1,376 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>Mounting cloud storage | My New Hugo Site</title>
+<meta name="description" content="Instructions on how to mount AWS S3 bucket, Microsoft Azure container or Google Drive as a filesystem.">
+<meta property="og:url" content="http://localhost:1313/en/docs/administration/advanced/mounting_cloud_storages/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="Mounting cloud storage">
+  <meta property="og:description" content="Instructions on how to mount AWS S3 bucket, Microsoft Azure container or Google Drive as a filesystem.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="en">
+
+  <meta itemprop="name" content="Mounting cloud storage">
+  <meta itemprop="description" content="Instructions on how to mount AWS S3 bucket, Microsoft Azure container or Google Drive as a filesystem.">
+  <meta itemprop="wordCount" content="894"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Mounting cloud storage">
+<meta name="twitter:description" content="Instructions on how to mount AWS S3 bucket, Microsoft Azure container or Google Drive as a filesystem.">
+
+
+
+
+
+<link href="/scss/main.css" rel="stylesheet">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="90pt" height="47pt" viewBox="0 0 152 47"><g transform="translate(0.000000,47.000000) scale(0.100000,-0.100000)" fill="#fff" stroke="none"><path d="M194 416c-50-22-51-34-3-80 24-22 33-29 20-14-30 34-19 51 30 46 34-3 44 1 71 29l32 33h-60c-32-1-73-7-90-14z"/><path d="M588 307c34-35 42-50 42-80s4-37 20-37 20 7 20 37 8 45 42 80c40 40 41 43 18 43-13 0-37-12-52-27l-28-27-28 27c-15 15-39 27-52 27-23 0-22-3 18-43z"/><path d="M795 341c-3-5-2-41 1-80 5-50 11-71 20-71 10 0 14 15 14 50 0 28 4 50 8 50 5 0 19-11 32-25s27-25 31-25 21 11 37 25c17 14 33 25 36 25s6-22 6-50c0-38 4-50 15-50 12 0 15 16 15 80 0 70-2 80-18 80-10 0-33-16-52-35l-33-34-39 34c-38 35-62 43-73 26z"/><path d="M1080 335c0-12 13-15 57-15h57l-57-58c-31-32-57-61-57-65s41-7 90-7c73 0 90 3 90 15s-13 15-57 15l-58 1 58 54c-33 30 56 59 52 64-3 7-42 11-91 11-68 0-84-3-84-15z"/><path d="M350 268c-52-11-96-21-98-22-1-2 4-20 11-42 32-92 34-89-33-86-58 4-60 5-60 32 0 15-7 33-15 40-25 21-18 42 12 38 49-6 36 20-17 31-84 18-83 18-78-42 9-112 81-187 187-195 78-6 121 10 169 62 51 56 76 139 56 190-7 19-14 19-134-6zm-30-63c-12-15-30-12-30 6 0 5 10 9 21 9 18 0 19-2 9-15z"/></g></svg></span><span class="navbar-brand__name">My New Hugo Site</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/en/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/en/about/"><span>About</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-default td-outer">
+      <main role="main" class="td-main">
+        <!-- raw HTML omitted -->
+<h2 id="aws-s3-bucket-as-filesystem">AWS S3 bucket as filesystem</h2>
+<h3 id="a-nameaws_s3_ubuntu_2004ubuntu-2004a"><!-- raw HTML omitted -->Ubuntu 20.04<!-- raw HTML omitted --></h3>
+<h4 id="a-nameaws_s3_mountmounta"><!-- raw HTML omitted -->Mount<!-- raw HTML omitted --></h4>
+<ol>
+<li>
+<p>Install s3fs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install s3fs
+</span></span></code></pre></div></li>
+<li>
+<p>Enter your credentials in a file <code>${HOME}/.passwd-s3fs</code> and set owner-only permissions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo ACCESS_KEY_ID:SECRET_ACCESS_KEY &gt; <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.passwd-s3fs
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">600</span> <span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.passwd-s3fs
+</span></span></code></pre></div></li>
+<li>
+<p>Uncomment <code>user_allow_other</code> in the <code>/etc/fuse.conf</code> file: <code>sudo nano /etc/fuse.conf</code></p>
+</li>
+<li>
+<p>Run s3fs, replace <code>bucket_name</code>, <code>mount_point</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>s3fs &lt;bucket_name&gt; &lt;mount_point&gt; -o allow_other -o passwd_file<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span>/.passwd-s3fs
+</span></span></code></pre></div></li>
+</ol>
+<p>For more details see <a href="https://github.com/s3fs-fuse/s3fs-fuse">here</a>.</p>
+<h4 id="a-nameaws_s3_automatically_mountautomatically-mounta"><!-- raw HTML omitted -->Automatically mount<!-- raw HTML omitted --></h4>
+<p>Follow the first 3 mounting steps above.</p>
+<h5 id="a-nameaws_s3_using_fstabusing-fstaba"><!-- raw HTML omitted -->Using fstab<!-- raw HTML omitted --></h5>
+<ol>
+<li>
+<p>Create a bash script named aws_s3_fuse(e.g in /usr/bin, as root) with this content
+(replace <code>user_name</code> on whose behalf the disk will be mounted, <code>backet_name</code>, <code>mount_point</code>, <code>/path/to/.passwd-s3fs</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>sudo -u &lt;user_name&gt; s3fs &lt;backet_name&gt; &lt;mount_point&gt; -o passwd_file<span style="color:#f92672">=</span>/path/to/.passwd-s3fs -o allow_other
+</span></span><span style="display:flex;"><span>exit <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Give it the execution permission:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/bin/aws_s3_fuse
+</span></span></code></pre></div></li>
+<li>
+<p>Edit <code>/etc/fstab</code> adding a line like this, replace <code>mount_point</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/absolute/path/to/aws_s3_fuse  &lt;mount_point&gt;     fuse    allow_other,user,_netdev     <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div></li>
+</ol>
+<h5 id="a-nameaws_s3_using_systemdusing-systemda"><!-- raw HTML omitted -->Using systemd<!-- raw HTML omitted --></h5>
+<ol>
+<li>
+<p>Create unit file <code>sudo nano /etc/systemd/system/s3fs.service</code>
+(replace <code>user_name</code>, <code>bucket_name</code>, <code>mount_point</code>, <code>/path/to/.passwd-s3fs</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Description<span style="color:#f92672">=</span>FUSE filesystem over AWS S3 bucket
+</span></span><span style="display:flex;"><span>After<span style="color:#f92672">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Environment<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;MOUNT_POINT=&lt;mount_point&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>User<span style="color:#f92672">=</span>&lt;user_name&gt;
+</span></span><span style="display:flex;"><span>Group<span style="color:#f92672">=</span>&lt;user_name&gt;
+</span></span><span style="display:flex;"><span>ExecStart<span style="color:#f92672">=</span>s3fs &lt;bucket_name&gt; <span style="color:#e6db74">${</span>MOUNT_POINT<span style="color:#e6db74">}</span> -o passwd_file<span style="color:#f92672">=</span>/path/to/.passwd-s3fs -o allow_other
+</span></span><span style="display:flex;"><span>ExecStop<span style="color:#f92672">=</span>fusermount -u <span style="color:#e6db74">${</span>MOUNT_POINT<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>Restart<span style="color:#f92672">=</span>always
+</span></span><span style="display:flex;"><span>Type<span style="color:#f92672">=</span>forking
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>WantedBy<span style="color:#f92672">=</span>multi-user.target
+</span></span></code></pre></div></li>
+<li>
+<p>Update the system configurations, enable unit autorun when the system boots, mount the bucket:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl enable s3fs.service
+</span></span><span style="display:flex;"><span>sudo systemctl start s3fs.service
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="a-nameaws_s3_checkchecka"><!-- raw HTML omitted -->Check<!-- raw HTML omitted --></h4>
+<p>A file <code>/etc/mtab</code> contains records of currently mounted filesystems.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /etc/mtab | grep <span style="color:#e6db74">&#39;s3fs&#39;</span>
+</span></span></code></pre></div><h4 id="a-nameaws_s3_unmount_filesystemunmount-filesystema"><!-- raw HTML omitted -->Unmount filesystem<!-- raw HTML omitted --></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>fusermount -u &lt;mount_point&gt;
+</span></span></code></pre></div><p>If you used <a href="#aws_s3_using_systemd">systemd</a> to mount a bucket:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl stop s3fs.service
+</span></span><span style="display:flex;"><span>sudo systemctl disable s3fs.service
+</span></span></code></pre></div><h2 id="microsoft-azure-container-as-filesystem">Microsoft Azure container as filesystem</h2>
+<h3 id="a-nameazure_ubuntu_2004ubuntu-2004a"><!-- raw HTML omitted -->Ubuntu 20.04<!-- raw HTML omitted --></h3>
+<h4 id="a-nameazure_mountmounta"><!-- raw HTML omitted -->Mount<!-- raw HTML omitted --></h4>
+<ol>
+<li>
+<p>Set up the Microsoft package repository.(More <a href="https://docs.microsoft.com/en-us/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software#configuring-the-repositories">here</a>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+</span></span><span style="display:flex;"><span>sudo dpkg -i packages-microsoft-prod.deb
+</span></span><span style="display:flex;"><span>sudo apt-get update
+</span></span></code></pre></div></li>
+<li>
+<p>Install <code>blobfuse</code> and <code>fuse</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install blobfuse fuse
+</span></span></code></pre></div><p>For more details see <a href="https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation">here</a></p>
+</li>
+<li>
+<p>Create environments (replace <code>account_name</code>, <code>account_key</code>, <code>mount_point</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export AZURE_STORAGE_ACCOUNT<span style="color:#f92672">=</span>&lt;account_name&gt;
+</span></span><span style="display:flex;"><span>export AZURE_STORAGE_ACCESS_KEY<span style="color:#f92672">=</span>&lt;account_key&gt;
+</span></span><span style="display:flex;"><span>MOUNT_POINT<span style="color:#f92672">=</span>&lt;mount_point&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>Create a folder for cache:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mkdir -p /mnt/blobfusetmp
+</span></span></code></pre></div></li>
+<li>
+<p>Make sure the file must be owned by the user who mounts the container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chown &lt;user&gt; /mnt/blobfusetmp
+</span></span></code></pre></div></li>
+<li>
+<p>Create the mount point, if it doesn&rsquo;t exists:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p <span style="color:#e6db74">${</span>MOUNT_POINT<span style="color:#e6db74">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Uncomment <code>user_allow_other</code> in the <code>/etc/fuse.conf</code> file: <code>sudo nano /etc/fuse.conf</code></p>
+</li>
+<li>
+<p>Mount container(replace <code>your_container</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>blobfuse <span style="color:#e6db74">${</span>MOUNT_POINT<span style="color:#e6db74">}</span> --container-name<span style="color:#f92672">=</span>&lt;your_container&gt; --tmp-path<span style="color:#f92672">=</span>/mnt/blobfusetmp -o allow_other
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="a-nameazure_automatically_mountautomatically-mounta"><!-- raw HTML omitted -->Automatically mount<!-- raw HTML omitted --></h4>
+<p>Follow the first 7 mounting steps above.</p>
+<h5 id="a-nameazure_using_fstabusing-fstaba"><!-- raw HTML omitted -->Using fstab<!-- raw HTML omitted --></h5>
+<ol>
+<li>
+<p>Create configuration file <code>connection.cfg</code> with same content, change accountName,
+select one from accountKey or sasToken and replace with your value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>accountName &lt;account-name-here&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Please provide either an account key or a SAS token, and delete the other line.</span>
+</span></span><span style="display:flex;"><span>accountKey &lt;account-key-here-delete-next-line&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#change authType to specify only 1</span>
+</span></span><span style="display:flex;"><span>sasToken &lt;shared-access-token-here-delete-previous-line&gt;
+</span></span><span style="display:flex;"><span>authType &lt;MSI/SAS/SPN/Key/empty&gt;
+</span></span><span style="display:flex;"><span>containerName &lt;insert-container-name-here&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>Create a bash script named <code>azure_fuse</code>(e.g in /usr/bin, as root) with content below
+(replace <code>user_name</code> on whose behalf the disk will be mounted, <code>mount_point</code>, <code>/path/to/blobfusetmp</code>,<code>/path/to/connection.cfg</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>sudo -u &lt;user_name&gt; blobfuse &lt;mount_point&gt; --tmp-path<span style="color:#f92672">=</span>/path/to/blobfusetmp  --config-file<span style="color:#f92672">=</span>/path/to/connection.cfg -o allow_other
+</span></span><span style="display:flex;"><span>exit <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Give it the execution permission:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/bin/azure_fuse
+</span></span></code></pre></div></li>
+<li>
+<p>Edit <code>/etc/fstab</code> with the blobfuse script. Add the following line(replace paths):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/absolute/path/to/azure_fuse &lt;/path/to/desired/mountpoint&gt; fuse allow_other,user,_netdev
+</span></span></code></pre></div></li>
+</ol>
+<h5 id="a-nameazure_using_systemdusing-systemda"><!-- raw HTML omitted -->Using systemd<!-- raw HTML omitted --></h5>
+<ol>
+<li>
+<p>Create unit file <code>sudo nano /etc/systemd/system/blobfuse.service</code>.
+(replace <code>user_name</code>, <code>mount_point</code>, <code>container_name</code>,<code>/path/to/connection.cfg</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Description<span style="color:#f92672">=</span>FUSE filesystem over Azure container
+</span></span><span style="display:flex;"><span>After<span style="color:#f92672">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Environment<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;MOUNT_POINT=&lt;mount_point&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>User<span style="color:#f92672">=</span>&lt;user_name&gt;
+</span></span><span style="display:flex;"><span>Group<span style="color:#f92672">=</span>&lt;user_name&gt;
+</span></span><span style="display:flex;"><span>ExecStart<span style="color:#f92672">=</span>blobfuse <span style="color:#e6db74">${</span>MOUNT_POINT<span style="color:#e6db74">}</span> --container-name<span style="color:#f92672">=</span>&lt;container_name&gt; --tmp-path<span style="color:#f92672">=</span>/mnt/blobfusetmp --config-file<span style="color:#f92672">=</span>/path/to/connection.cfg -o allow_other
+</span></span><span style="display:flex;"><span>ExecStop<span style="color:#f92672">=</span>fusermount -u <span style="color:#e6db74">${</span>MOUNT_POINT<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>Restart<span style="color:#f92672">=</span>always
+</span></span><span style="display:flex;"><span>Type<span style="color:#f92672">=</span>forking
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>WantedBy<span style="color:#f92672">=</span>multi-user.target
+</span></span></code></pre></div></li>
+<li>
+<p>Update the system configurations, enable unit autorun when the system boots, mount the container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl enable blobfuse.service
+</span></span><span style="display:flex;"><span>sudo systemctl start blobfuse.service
+</span></span></code></pre></div><p>Or for more detail <a href="https://github.com/Azure/azure-storage-fuse/tree/master/systemd">see here</a></p>
+</li>
+</ol>
+<h4 id="a-nameazure_checkchecka"><!-- raw HTML omitted -->Check<!-- raw HTML omitted --></h4>
+<p>A file <code>/etc/mtab</code> contains records of currently mounted filesystems.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /etc/mtab | grep <span style="color:#e6db74">&#39;blobfuse&#39;</span>
+</span></span></code></pre></div><h4 id="a-nameazure_unmount_filesystemunmount-filesystema"><!-- raw HTML omitted -->Unmount filesystem<!-- raw HTML omitted --></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>fusermount -u &lt;mount_point&gt;
+</span></span></code></pre></div><p>If you used <a href="#azure_using_systemd">systemd</a> to mount a container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl stop blobfuse.service
+</span></span><span style="display:flex;"><span>sudo systemctl disable blobfuse.service
+</span></span></code></pre></div><p>If you have any mounting problems, check out the <a href="https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ">answers</a>
+to common problems</p>
+<h2 id="google-drive-as-filesystem">Google Drive as filesystem</h2>
+<h3 id="a-namegoogle_drive_ubuntu_2004ubuntu-2004a"><!-- raw HTML omitted -->Ubuntu 20.04<!-- raw HTML omitted --></h3>
+<h4 id="a-namegoogle_drive_mountmounta"><!-- raw HTML omitted -->Mount<!-- raw HTML omitted --></h4>
+<p>To mount a google drive as a filesystem in user space(FUSE)
+you can use <a href="https://github.com/astrada/google-drive-ocamlfuse">google-drive-ocamlfuse</a>
+To do this follow the instructions below:</p>
+<ol>
+<li>
+<p>Install google-drive-ocamlfuse:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo add-apt-repository ppa:alessandro-strada/ppa
+</span></span><span style="display:flex;"><span>sudo apt-get update
+</span></span><span style="display:flex;"><span>sudo apt-get install google-drive-ocamlfuse
+</span></span></code></pre></div></li>
+<li>
+<p>Run <code>google-drive-ocamlfuse</code> without parameters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>google-drive-ocamlfuse
+</span></span></code></pre></div><p>This command will create the default application directory (~/.gdfuse/default),
+containing the configuration file config (see the <a href="https://github.com/astrada/google-drive-ocamlfuse/wiki">wiki</a>
+page for more details about configuration).
+And it will start a web browser to obtain authorization to access your Google Drive.
+This will let you modify default configuration before mounting the filesystem.</p>
+<p>Then you can choose a local directory to mount your Google Drive (e.g.: ~/GoogleDrive).</p>
+</li>
+<li>
+<p>Create the mount point, if it doesn&rsquo;t exist(replace mount_point):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mountpoint<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;mount_point&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>mkdir -p $mountpoint
+</span></span></code></pre></div></li>
+<li>
+<p>Uncomment <code>user_allow_other</code> in the <code>/etc/fuse.conf</code> file: <code>sudo nano /etc/fuse.conf</code></p>
+</li>
+<li>
+<p>Mount the filesystem:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>google-drive-ocamlfuse -o allow_other $mountpoint
+</span></span></code></pre></div></li>
+</ol>
+<h4 id="a-namegoogle_drive_automatically_mountautomatically-mounta"><!-- raw HTML omitted -->Automatically mount<!-- raw HTML omitted --></h4>
+<p>Follow the first 4 mounting steps above.</p>
+<h5 id="a-namegoogle_drive_using_fstabusing-fstaba"><!-- raw HTML omitted -->Using fstab<!-- raw HTML omitted --></h5>
+<ol>
+<li>
+<p>Create a bash script named gdfuse(e.g in /usr/bin, as root) with this content
+(replace <code>user_name</code> on whose behalf the disk will be mounted, <code>label</code>, <code>mount_point</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>sudo -u &lt;user_name&gt; google-drive-ocamlfuse -o allow_other -label &lt;label&gt; &lt;mount_point&gt;
+</span></span><span style="display:flex;"><span>exit <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Give it the execution permission:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x /usr/bin/gdfuse
+</span></span></code></pre></div></li>
+<li>
+<p>Edit <code>/etc/fstab</code> adding a line like this, replace <code>mount_point</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/absolute/path/to/gdfuse  &lt;mount_point&gt;     fuse    allow_other,user,_netdev     <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>For more details see <a href="https://github.com/astrada/google-drive-ocamlfuse/wiki/Automounting">here</a></p>
+</li>
+</ol>
+<h5 id="a-namegoogle_drive_using_systemdusing-systemda"><!-- raw HTML omitted -->Using systemd<!-- raw HTML omitted --></h5>
+<ol>
+<li>
+<p>Create unit file <code>sudo nano /etc/systemd/system/google-drive-ocamlfuse.service</code>.
+(replace <code>user_name</code>, <code>label</code>(default <code>label=default</code>), <code>mount_point</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Description<span style="color:#f92672">=</span>FUSE filesystem over Google Drive
+</span></span><span style="display:flex;"><span>After<span style="color:#f92672">=</span>network.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Environment<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;MOUNT_POINT=&lt;mount_point&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>User<span style="color:#f92672">=</span>&lt;user_name&gt;
+</span></span><span style="display:flex;"><span>Group<span style="color:#f92672">=</span>&lt;user_name&gt;
+</span></span><span style="display:flex;"><span>ExecStart<span style="color:#f92672">=</span>google-drive-ocamlfuse -label &lt;label&gt; <span style="color:#e6db74">${</span>MOUNT_POINT<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>ExecStop<span style="color:#f92672">=</span>fusermount -u <span style="color:#e6db74">${</span>MOUNT_POINT<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>Restart<span style="color:#f92672">=</span>always
+</span></span><span style="display:flex;"><span>Type<span style="color:#f92672">=</span>forking
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>WantedBy<span style="color:#f92672">=</span>multi-user.target
+</span></span></code></pre></div></li>
+<li>
+<p>Update the system configurations, enable unit autorun when the system boots, mount the drive:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl enable google-drive-ocamlfuse.service
+</span></span><span style="display:flex;"><span>sudo systemctl start google-drive-ocamlfuse.service
+</span></span></code></pre></div><p>For more details see <a href="https://github.com/astrada/google-drive-ocamlfuse/wiki/Automounting">here</a></p>
+</li>
+</ol>
+<h4 id="a-namegoogle_drive_checkchecka"><!-- raw HTML omitted -->Check<!-- raw HTML omitted --></h4>
+<p>A file <code>/etc/mtab</code> contains records of currently mounted filesystems.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /etc/mtab | grep <span style="color:#e6db74">&#39;google-drive-ocamlfuse&#39;</span>
+</span></span></code></pre></div><h4 id="a-namegoogle_drive_unmount_filesystemunmount-filesystema"><!-- raw HTML omitted -->Unmount filesystem<!-- raw HTML omitted --></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>fusermount -u &lt;mount_point&gt;
+</span></span></code></pre></div><p>If you used <a href="#google_drive_using_systemd">systemd</a> to mount a drive:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl stop google-drive-ocamlfuse.service
+</span></span><span style="display:flex;"><span>sudo systemctl disable google-drive-ocamlfuse.service
+</span></span></code></pre></div>
+      </main>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.js"></script>
+<script defer src="/js/click-to-copy.js" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

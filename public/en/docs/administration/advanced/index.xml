@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Advanced on My New Hugo Site</title>
+    <link>http://localhost:1313/en/docs/administration/advanced/</link>
+    <description>Recent content in Advanced on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/en/docs/administration/advanced/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVAT deployment on Kubernetes with Helm</title>
+      <link>http://localhost:1313/en/docs/administration/advanced/k8s_deployment_with_helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/advanced/k8s_deployment_with_helm/</guid>
+      <description>Prerequisites Installing dependencies Optional steps Configuration Postgresql password? (Optional) Enable Auto annotation feature Analytics Deployment With overrides: Without overrides: Post-deployment configuration How to create superuser? FAQ What is kubernetes and how it is working? What is helm and how it is working? How to setup Minikube How to understand what diff will be inflicted by &amp;lsquo;helm upgrade&amp;rsquo;? I want to use my own postgresql/redis with your chart. I want to override some settings in values.</description>
+    </item>
+    <item>
+      <title>CVAT Analytics and monitoring</title>
+      <link>http://localhost:1313/en/docs/administration/advanced/analytics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/advanced/analytics/</guid>
+      <description>CVAT Analytics suite of tools is designed to track and understand users&amp;rsquo; behavior, system performance, and for identifying potential issues in your application.&#xA;You can also visualize user activity through Grafana, and aggregate user working time by the jobs.&#xA;Gathered logs can be additionally filtered for efficient debugging.&#xA;By using analytics, you&amp;rsquo;ll gain valuable insights to optimize your system and enhance user satisfaction.&#xA;CVAT analytics are available from the top menu.</description>
+    </item>
+    <item>
+      <title>Mounting cloud storage</title>
+      <link>http://localhost:1313/en/docs/administration/advanced/mounting_cloud_storages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/advanced/mounting_cloud_storages/</guid>
+      <description>AWS S3 bucket as filesystem Ubuntu 20.04 Mount Install s3fs:&#xA;sudo apt install s3fs Enter your credentials in a file ${HOME}/.passwd-s3fs and set owner-only permissions:&#xA;echo ACCESS_KEY_ID:SECRET_ACCESS_KEY &amp;gt; ${HOME}/.passwd-s3fs chmod 600 ${HOME}/.passwd-s3fs Uncomment user_allow_other in the /etc/fuse.conf file: sudo nano /etc/fuse.conf&#xA;Run s3fs, replace bucket_name, mount_point:&#xA;s3fs &amp;lt;bucket_name&amp;gt; &amp;lt;mount_point&amp;gt; -o allow_other -o passwd_file=${HOME}/.passwd-s3fs For more details see here.&#xA;Automatically mount Follow the first 3 mounting steps above.&#xA;Using fstab Create a bash script named aws_s3_fuse(e.</description>
+    </item>
+    <item>
+      <title>Backup guide</title>
+      <link>http://localhost:1313/en/docs/administration/advanced/backup_guide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/advanced/backup_guide/</guid>
+      <description>About CVAT data volumes Docker volumes are used to store all CVAT data:&#xA;cvat_db: PostgreSQL database files, used to store information about users, tasks, projects, annotations, etc. Mounted into cvat_db container by /var/lib/postgresql/data path.&#xA;cvat_data: used to store uploaded and prepared media data. Mounted into cvat container by /home/django/data path.&#xA;cvat_keys: used to store the Django secret key. Mounted into cvat container by /home/django/keys path.&#xA;cvat_logs: used to store logs of CVAT backend processes managed by supevisord.</description>
+    </item>
+    <item>
+      <title>Upgrade guide</title>
+      <link>http://localhost:1313/en/docs/administration/advanced/upgrade_guide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/advanced/upgrade_guide/</guid>
+      <description>Upgrade guide Note: updating CVAT from version 2.2.0 to version 2.3.0 requires additional manual actions with database data due to upgrading PostgreSQL base image major version. See details here&#xA;To upgrade CVAT, follow these steps:&#xA;It is highly recommended backup all CVAT data before updating, follow the backup guide and backup all CVAT volumes.&#xA;Go to the previously cloned CVAT directory and stop all CVAT containers with:&#xA;docker compose down If you have included additional components, include all compose configuration files that are used, e.</description>
+    </item>
+    <item>
+      <title>IAM: system roles</title>
+      <link>http://localhost:1313/en/docs/administration/advanced/iam_system_roles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/advanced/iam_system_roles/</guid>
+      <description>System roles By default CVAT users can be assigned to one of the following groups: admin, business, user and worker.&#xA;Each of these groups gives a set of permissions. TBD&#xA;Changing permissions System permissions are defined using .rego files stored in cvat/apps/iam/rules/. Rego is a declarative language used for defining OPA policies. It&amp;rsquo;s syntax is defined in OPA docs.&#xA;After changing the .rego files, you need to rebuilt and restart the docker compose for the changes to take effect.</description>
+    </item>
+    <item>
+      <title>Webhooks</title>
+      <link>http://localhost:1313/en/docs/administration/advanced/webhooks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/advanced/webhooks/</guid>
+      <description>Webhooks are user-defined HTTP callbacks that are triggered by specific events. When an event that triggers a webhook occurs, CVAT makes an HTTP request to the URL configured for the webhook. The request will include a payload with information about the event.&#xA;CVAT, webhooks can be triggered by a variety of events, such as the creation, deletion, or modification of tasks, jobs, and so on. This makes it easy to set up automated processes that respond to changes made in CVAT.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/en/docs/administration/advanced/installation_automatic_annotation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/advanced/installation_automatic_annotation/</guid>
+      <description>title: &amp;lsquo;Semi-automatic and Automatic Annotation&amp;rsquo; linkTitle: &amp;lsquo;Installation Auto Annotation&amp;rsquo; weight: 10 description: &amp;lsquo;Information about the installation of components needed for semi-automatic and automatic annotation.&amp;rsquo;&#xA;⚠ WARNING: Do not use docker compose up If you did, make sure all containers are stopped by docker compose down.&#xA;To bring up cvat with auto annotation tool, from cvat root directory, you need to run:&#xA;docker compose -f docker-compose.yml -f components/serverless/docker-compose.serverless.yml up -d If you did any changes to the Docker Compose files, make sure to add --build at the end.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/en/docs/administration/advanced/ldap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/advanced/ldap/</guid>
+      <description>title: &amp;lsquo;LDAP Backed Authentication&amp;rsquo; linkTitle: &amp;lsquo;LDAP Login&amp;rsquo; weight: 40 description: &amp;lsquo;Allow users to login with credentials from a central source&amp;rsquo;&#xA;The creation of settings.py When integrating LDAP login, we need to create an overlay to the default CVAT settings located in cvat/settings/production.py. This overlay is where we will configure Django to connect to the LDAP server.&#xA;The main issue with using LDAP is that different LDAP implementations have different parameters.</description>
+    </item>
+  </channel>
+</rss>

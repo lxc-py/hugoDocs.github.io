@@ -1,0 +1,294 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>My New Hugo Site</title>
+<meta name="description" content="title: &amp;lsquo;LDAP Backed Authentication&amp;rsquo; linkTitle: &amp;lsquo;LDAP Login&amp;rsquo; weight: 40 description: &amp;lsquo;Allow users to login with credentials from a central source&amp;rsquo;
+The creation of settings.py When integrating LDAP login, we need to create an overlay to the default CVAT settings located in cvat/settings/production.py. This overlay is where we will configure Django to connect to the LDAP server.
+The main issue with using LDAP is that different LDAP implementations have different parameters.">
+<meta property="og:url" content="http://localhost:1313/en/docs/administration/advanced/ldap/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="My New Hugo Site">
+  <meta property="og:description" content="title: ‘LDAP Backed Authentication’ linkTitle: ‘LDAP Login’ weight: 40 description: ‘Allow users to login with credentials from a central source’
+The creation of settings.py When integrating LDAP login, we need to create an overlay to the default CVAT settings located in cvat/settings/production.py. This overlay is where we will configure Django to connect to the LDAP server.
+The main issue with using LDAP is that different LDAP implementations have different parameters.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="en">
+
+  <meta itemprop="name" content="My New Hugo Site">
+  <meta itemprop="description" content="title: &lsquo;LDAP Backed Authentication&rsquo; linkTitle: &lsquo;LDAP Login&rsquo; weight: 40 description: &lsquo;Allow users to login with credentials from a central source&rsquo;
+The creation of settings.py When integrating LDAP login, we need to create an overlay to the default CVAT settings located in cvat/settings/production.py. This overlay is where we will configure Django to connect to the LDAP server.
+The main issue with using LDAP is that different LDAP implementations have different parameters.">
+  <meta itemprop="wordCount" content="660"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="">
+<meta name="twitter:description" content="title: &lsquo;LDAP Backed Authentication&rsquo; linkTitle: &lsquo;LDAP Login&rsquo; weight: 40 description: &lsquo;Allow users to login with credentials from a central source&rsquo;
+The creation of settings.py When integrating LDAP login, we need to create an overlay to the default CVAT settings located in cvat/settings/production.py. This overlay is where we will configure Django to connect to the LDAP server.
+The main issue with using LDAP is that different LDAP implementations have different parameters.">
+
+
+
+
+
+<link href="/scss/main.css" rel="stylesheet">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="90pt" height="47pt" viewBox="0 0 152 47"><g transform="translate(0.000000,47.000000) scale(0.100000,-0.100000)" fill="#fff" stroke="none"><path d="M194 416c-50-22-51-34-3-80 24-22 33-29 20-14-30 34-19 51 30 46 34-3 44 1 71 29l32 33h-60c-32-1-73-7-90-14z"/><path d="M588 307c34-35 42-50 42-80s4-37 20-37 20 7 20 37 8 45 42 80c40 40 41 43 18 43-13 0-37-12-52-27l-28-27-28 27c-15 15-39 27-52 27-23 0-22-3 18-43z"/><path d="M795 341c-3-5-2-41 1-80 5-50 11-71 20-71 10 0 14 15 14 50 0 28 4 50 8 50 5 0 19-11 32-25s27-25 31-25 21 11 37 25c17 14 33 25 36 25s6-22 6-50c0-38 4-50 15-50 12 0 15 16 15 80 0 70-2 80-18 80-10 0-33-16-52-35l-33-34-39 34c-38 35-62 43-73 26z"/><path d="M1080 335c0-12 13-15 57-15h57l-57-58c-31-32-57-61-57-65s41-7 90-7c73 0 90 3 90 15s-13 15-57 15l-58 1 58 54c-33 30 56 59 52 64-3 7-42 11-91 11-68 0-84-3-84-15z"/><path d="M350 268c-52-11-96-21-98-22-1-2 4-20 11-42 32-92 34-89-33-86-58 4-60 5-60 32 0 15-7 33-15 40-25 21-18 42 12 38 49-6 36 20-17 31-84 18-83 18-78-42 9-112 81-187 187-195 78-6 121 10 169 62 51 56 76 139 56 190-7 19-14 19-134-6zm-30-63c-12-15-30-12-30 6 0 5 10 9 21 9 18 0 19-2 9-15z"/></g></svg></span><span class="navbar-brand__name">My New Hugo Site</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/en/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/en/about/"><span>About</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-default td-outer">
+      <main role="main" class="td-main">
+        <!-- raw HTML omitted -->
+<hr>
+<p>title: &lsquo;LDAP Backed Authentication&rsquo;
+linkTitle: &lsquo;LDAP Login&rsquo;
+weight: 40
+description: &lsquo;Allow users to login with credentials from a central source&rsquo;</p>
+<hr>
+<!-- raw HTML omitted -->
+<h3 id="the-creation-of-settingspy">The creation of <code>settings.py</code></h3>
+<p>When integrating LDAP login, we need to create an overlay to the default CVAT
+settings located in
+<a href="https://github.com/cvat-ai/cvat/blob/develop/cvat/settings/production.py">cvat/settings/production.py</a>.
+This overlay is where we will configure Django to connect to the LDAP server.</p>
+<p>The main issue with using LDAP is that different LDAP implementations have
+different parameters. So the options used for Active Directory backed
+authentication will differ if you were to be using FreeIPA.</p>
+<h3 id="update-docker-composeoverrideyml">Update <code>docker-compose.override.yml</code></h3>
+<p>In your override config you need to passthrough your settings and tell CVAT to
+use them by setting the <code>DJANGO_SETTINGS_MODULE</code> variable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cvat_server</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">DJANGO_SETTINGS_MODULE</span>: <span style="color:#ae81ff">settings</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./settings.py:/home/django/settings.py:ro</span>
+</span></span></code></pre></div><h3 id="active-directory-example">Active Directory Example</h3>
+<p>The following example should allow for users to authenticate themselves against
+Active Directory. This example requires a dummy user named <code>cvat_bind</code>. The
+configuration for the bind account does not need any special permissions.</p>
+<p>When updating <code>AUTH_LDAP_BIND_DN</code>, you can write out the account info in two
+ways. Both are documented in the config below.</p>
+<p>This config is known to work with Windows Server 2022, but should work for older
+versions and Samba&rsquo;s implementation of Active Directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e"># We are overlaying production</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> cvat.settings.production <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Custom code below</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> ldap
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django_auth_ldap.config <span style="color:#f92672">import</span> LDAPSearch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django_auth_ldap.config <span style="color:#f92672">import</span> NestedActiveDirectoryGroupType
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Notify CVAT that we are using LDAP authentication</span>
+</span></span><span style="display:flex;"><span>IAM_TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;LDAP&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Talking to the LDAP server</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_SERVER_URI <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ldap://ad.example.com&#34;</span> <span style="color:#75715e"># IP Addresses also work</span>
+</span></span><span style="display:flex;"><span>ldap<span style="color:#f92672">.</span>set_option(ldap<span style="color:#f92672">.</span>OPT_REFERRALS, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>_BASE_DN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CN=Users,DC=ad,DC=example,DC=com&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Authenticating with the LDAP server</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_BIND_DN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CN=cvat_bind,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> _BASE_DN
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># AUTH_LDAP_BIND_DN = &#34;cvat_bind@ad.example.com&#34;</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_BIND_PASSWORD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SuperSecurePassword^21&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_USER_SEARCH <span style="color:#f92672">=</span> LDAPSearch(
+</span></span><span style="display:flex;"><span>    _BASE_DN,
+</span></span><span style="display:flex;"><span>    ldap<span style="color:#f92672">.</span>SCOPE_SUBTREE,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;(sAMAccountName=</span><span style="color:#e6db74">%(user)s</span><span style="color:#e6db74">)&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_GROUP_SEARCH <span style="color:#f92672">=</span> LDAPSearch(
+</span></span><span style="display:flex;"><span>    _BASE_DN,
+</span></span><span style="display:flex;"><span>    ldap<span style="color:#f92672">.</span>SCOPE_SUBTREE,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;(objectClass=group)&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Mapping Django field names to Active Directory attributes</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_USER_ATTR_MAP <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;user_name&#34;</span>: <span style="color:#e6db74">&#34;sAMAccountName&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;first_name&#34;</span>: <span style="color:#e6db74">&#34;givenName&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;last_name&#34;</span>: <span style="color:#e6db74">&#34;sn&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;email&#34;</span>: <span style="color:#e6db74">&#34;mail&#34;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Group Management</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_GROUP_TYPE <span style="color:#f92672">=</span> NestedActiveDirectoryGroupType()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Register Django LDAP backend</span>
+</span></span><span style="display:flex;"><span>AUTHENTICATION_BACKENDS <span style="color:#f92672">+=</span> [<span style="color:#e6db74">&#39;django_auth_ldap.backend.LDAPBackend&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Map Active Directory groups to Django/CVAT groups.</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_ADMIN_GROUPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;CN=CVAT Admins,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>AUTH_LDAP_BUSINESS_GROUPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;CN=CVAT Managers,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>AUTH_LDAP_WORKER_GROUPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;CN=CVAT Workers,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>AUTH_LDAP_USER_GROUPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;CN=CVAT Users,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DJANGO_AUTH_LDAP_GROUPS <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;admin&#34;</span>: AUTH_LDAP_ADMIN_GROUPS,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;business&#34;</span>: AUTH_LDAP_BUSINESS_GROUPS,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;user&#34;</span>: AUTH_LDAP_USER_GROUPS,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;worker&#34;</span>: AUTH_LDAP_WORKER_GROUPS,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="freeipa-example">FreeIPA Example</h3>
+<p>The following example should allow for users to authenticate themselves against
+FreeIPA. This example requires a dummy user named <code>cvat_bind</code>. The configuration
+for the bind account does not need any special permissions.</p>
+<p>When updating <code>AUTH_LDAP_BIND_DN</code>, you can only write the user info in one way,
+unlike with <a href="#active-directory-example">Active Directory</a></p>
+<p>This config is known to work with AlmaLinux 8, but may work for other
+versions and flavors of Enterprise Linux.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e"># We are overlaying production</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> cvat.settings.production <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Custom code below</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> ldap
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django_auth_ldap.config <span style="color:#f92672">import</span> LDAPSearch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> django_auth_ldap.config <span style="color:#f92672">import</span> GroupOfNamesType
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Notify CVAT that we are using LDAP authentication</span>
+</span></span><span style="display:flex;"><span>IAM_TYPE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;LDAP&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>_BASE_DN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;CN=Accounts,DC=ipa,DC=example,DC=com&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Talking to the LDAP server</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_SERVER_URI <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ldap://ipa.example.com&#34;</span> <span style="color:#75715e"># IP Addresses also work</span>
+</span></span><span style="display:flex;"><span>ldap<span style="color:#f92672">.</span>set_option(ldap<span style="color:#f92672">.</span>OPT_REFERRALS, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Authenticating with the LDAP server</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_BIND_DN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;UID=cvat_bind,CN=Users,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> _BASE_DN
+</span></span><span style="display:flex;"><span>AUTH_LDAP_BIND_PASSWORD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SuperSecurePassword^21&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_USER_SEARCH <span style="color:#f92672">=</span> LDAPSearch(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;CN=Users,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>    ldap<span style="color:#f92672">.</span>SCOPE_SUBTREE,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;(uid=</span><span style="color:#e6db74">%(user)s</span><span style="color:#e6db74">)&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_GROUP_SEARCH <span style="color:#f92672">=</span> LDAPSearch(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;CN=Groups,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>    ldap<span style="color:#f92672">.</span>SCOPE_SUBTREE,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;(objectClass=groupOfNames)&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Mapping Django field names to FreeIPA attributes</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_USER_ATTR_MAP <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;user_name&#34;</span>: <span style="color:#e6db74">&#34;uid&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;first_name&#34;</span>: <span style="color:#e6db74">&#34;givenName&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;last_name&#34;</span>: <span style="color:#e6db74">&#34;sn&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;email&#34;</span>: <span style="color:#e6db74">&#34;mail&#34;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Group Management</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_GROUP_TYPE <span style="color:#f92672">=</span> GroupOfNamesType()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Register Django LDAP backend</span>
+</span></span><span style="display:flex;"><span>AUTHENTICATION_BACKENDS <span style="color:#f92672">+=</span> [<span style="color:#e6db74">&#39;django_auth_ldap.backend.LDAPBackend&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Map FreeIPA groups to Django/CVAT groups.</span>
+</span></span><span style="display:flex;"><span>AUTH_LDAP_ADMIN_GROUPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;CN=cvat_admins,CN=Groups,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>AUTH_LDAP_BUSINESS_GROUPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;CN=cvat_managers,CN=Groups,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>AUTH_LDAP_WORKER_GROUPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;CN=cvat_workers,CN=Groups,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>AUTH_LDAP_USER_GROUPS <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;CN=cvat_users,CN=Groups,</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> _BASE_DN,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DJANGO_AUTH_LDAP_GROUPS <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;admin&#34;</span>: AUTH_LDAP_ADMIN_GROUPS,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;business&#34;</span>: AUTH_LDAP_BUSINESS_GROUPS,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;user&#34;</span>: AUTH_LDAP_USER_GROUPS,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;worker&#34;</span>: AUTH_LDAP_WORKER_GROUPS,
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ldap/distinguished-names">Microsoft - LDAP Distinguished Names</a>
+<ul>
+<li>Elements that make up a distinguished name. Used with user/group searches.</li>
+</ul>
+</li>
+<li><a href="https://django-auth-ldap.readthedocs.io/en/latest/reference.html">Django LDAP Reference Manual</a>
+<ul>
+<li>Other options that can be used for LDAP authentication in Django.</li>
+</ul>
+</li>
+<li><a href="https://techexpert.tips/django/django-ldap-authentication-active-directory">Django LDAP guide using Active Directory (Unofficial)</a>
+<ul>
+<li>This is not specific to CVAT but can provide insight about firewall rules.</li>
+</ul>
+</li>
+</ul>
+
+      </main>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.js"></script>
+<script defer src="/js/click-to-copy.js" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Basics on My New Hugo Site</title>
+    <link>http://localhost:1313/en/docs/administration/basics/</link>
+    <description>Recent content in Basics on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/en/docs/administration/basics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Superuser registration</title>
+      <link>http://localhost:1313/en/docs/administration/basics/admin-account/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/basics/admin-account/</guid>
+      <description>This section is for users who want to be a bit more flexible with CVAT use.&#xA;The user you register by default does not have full permissions on the instance, so you must create a superuser. The superuser can use Django administration panel to assign groups (roles) to other users. Available roles are: user (default), admin, business, worker.&#xA;Prerequisites Before you register an admin account (superuser), you need to install CVAT locally, see Installation Guide.</description>
+    </item>
+    <item>
+      <title>AWS-Deployment Guide</title>
+      <link>http://localhost:1313/en/docs/administration/basics/aws-deployment-guide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/basics/aws-deployment-guide/</guid>
+      <description>There are two ways of deploying the CVAT.&#xA;On Nvidia GPU Machine: Tensorflow annotation feature is dependent on GPU hardware. One of the easy ways to launch CVAT with the tf-annotation app is to use AWS P3 instances, which provides the NVIDIA GPU. Read more about P3 instances here. Overall setup instruction is explained in main readme file, except Installing Nvidia drivers. So we need to download the drivers and install it.</description>
+    </item>
+    <item>
+      <title>REST API guide</title>
+      <link>http://localhost:1313/en/docs/administration/basics/rest_api_guide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/basics/rest_api_guide/</guid>
+      <description>To access swagger documentation you need to be authorized.&#xA;Automatically generated Swagger documentation for Django REST API is available on &amp;lt;cvat_origin&amp;gt;/api/swagger(default: localhost:8080/api/swagger).&#xA;Swagger documentation is visible on allowed hosts, Update environment variable in docker-compose.yml file with cvat hosted machine IP or domain name. Example - ALLOWED_HOSTS: &#39;localhost, 127.0.0.1&#39;.&#xA;Make a request to a resource stored on a server and the server will respond with the requested information. The HTTP protocol is used to transport a data.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/en/docs/administration/basics/installation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/docs/administration/basics/installation/</guid>
+      <description>title: &amp;lsquo;Installation Guide&amp;rsquo; linkTitle: &amp;lsquo;Installation Guide&amp;rsquo; weight: 1 description: &amp;lsquo;A CVAT installation guide for different operating systems.&amp;rsquo;&#xA;Quick installation guide Before you can use CVAT, you’ll need to get it installed. The document below contains instructions for the most popular operating systems. If your system is not covered by the document it should be relatively straightforward to adapt the instructions below for other systems.&#xA;Probably you need to modify the instructions below in case you are behind a proxy server.</description>
+    </item>
+  </channel>
+</rss>

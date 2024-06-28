@@ -1,0 +1,397 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>CVAT deployment on Kubernetes with Helm | My New Hugo Site</title>
+<meta name="description" content="Instructions for deploying CVAT on a Kubernetes cluster.">
+<meta property="og:url" content="http://localhost:1313/en/docs/administration/advanced/k8s_deployment_with_helm/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="CVAT deployment on Kubernetes with Helm">
+  <meta property="og:description" content="Instructions for deploying CVAT on a Kubernetes cluster.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="en">
+
+  <meta itemprop="name" content="CVAT deployment on Kubernetes with Helm">
+  <meta itemprop="description" content="Instructions for deploying CVAT on a Kubernetes cluster.">
+  <meta itemprop="wordCount" content="1257"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CVAT deployment on Kubernetes with Helm">
+<meta name="twitter:description" content="Instructions for deploying CVAT on a Kubernetes cluster.">
+
+
+
+
+
+<link href="/scss/main.css" rel="stylesheet">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="90pt" height="47pt" viewBox="0 0 152 47"><g transform="translate(0.000000,47.000000) scale(0.100000,-0.100000)" fill="#fff" stroke="none"><path d="M194 416c-50-22-51-34-3-80 24-22 33-29 20-14-30 34-19 51 30 46 34-3 44 1 71 29l32 33h-60c-32-1-73-7-90-14z"/><path d="M588 307c34-35 42-50 42-80s4-37 20-37 20 7 20 37 8 45 42 80c40 40 41 43 18 43-13 0-37-12-52-27l-28-27-28 27c-15 15-39 27-52 27-23 0-22-3 18-43z"/><path d="M795 341c-3-5-2-41 1-80 5-50 11-71 20-71 10 0 14 15 14 50 0 28 4 50 8 50 5 0 19-11 32-25s27-25 31-25 21 11 37 25c17 14 33 25 36 25s6-22 6-50c0-38 4-50 15-50 12 0 15 16 15 80 0 70-2 80-18 80-10 0-33-16-52-35l-33-34-39 34c-38 35-62 43-73 26z"/><path d="M1080 335c0-12 13-15 57-15h57l-57-58c-31-32-57-61-57-65s41-7 90-7c73 0 90 3 90 15s-13 15-57 15l-58 1 58 54c-33 30 56 59 52 64-3 7-42 11-91 11-68 0-84-3-84-15z"/><path d="M350 268c-52-11-96-21-98-22-1-2 4-20 11-42 32-92 34-89-33-86-58 4-60 5-60 32 0 15-7 33-15 40-25 21-18 42 12 38 49-6 36 20-17 31-84 18-83 18-78-42 9-112 81-187 187-195 78-6 121 10 169 62 51 56 76 139 56 190-7 19-14 19-134-6zm-30-63c-12-15-30-12-30 6 0 5 10 9 21 9 18 0 19-2 9-15z"/></g></svg></span><span class="navbar-brand__name">My New Hugo Site</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/en/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/en/about/"><span>About</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-default td-outer">
+      <main role="main" class="td-main">
+        <!-- raw HTML omitted -->
+<ul>
+<li><a href="#prerequisites">Prerequisites</a>
+<ul>
+<li><a href="#installing-dependencies">Installing dependencies</a></li>
+<li><a href="#optional-steps">Optional steps</a></li>
+</ul>
+</li>
+<li><a href="#configuration">Configuration</a>
+<ul>
+<li><a href="#postgresql-password">Postgresql password?</a></li>
+<li><a href="#optional-enable-auto-annotation-feature">(Optional) Enable Auto annotation feature</a></li>
+<li><a href="#analytics">Analytics</a></li>
+</ul>
+</li>
+<li><a href="#deployment">Deployment</a>
+<ul>
+<li><a href="#with-overrides">With overrides:</a></li>
+<li><a href="#without-overrides">Without overrides:</a></li>
+</ul>
+</li>
+<li><a href="#post-deployment-configuration">Post-deployment configuration</a>
+<ul>
+<li><a href="#how-to-create-superuser">How to create superuser?</a></li>
+</ul>
+</li>
+<li><a href="#faq">FAQ</a>
+<ul>
+<li><a href="#what-is-kubernetes-and-how-it-is-working">What is kubernetes and how it is working?</a></li>
+<li><a href="#what-is-helm-and-how-it-is-working">What is helm and how it is working?</a></li>
+<li><a href="#how-to-setup-minikube">How to setup Minikube</a></li>
+<li><a href="#how-to-understand-what-diff-will-be-inflicted-by-helm-upgrade">How to understand what diff will be inflicted by &lsquo;helm upgrade&rsquo;?</a></li>
+<li><a href="#i-want-to-use-my-own-postgresqlredis-with-your-chart">I want to use my own postgresql/redis with your chart.</a></li>
+<li><a href="#i-want-to-override-some-settings-in-valuesyaml">I want to override some settings in values.yaml.</a></li>
+<li><a href="#why-you-used-external-charts-to-provide-redis-and-postgres">Why you used external charts to provide redis and postgres?</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>Installed and configured <a href="https://kubernetes.io/">kubernetes</a> cluster. If you do not already have a cluster,
+you can create one by using <a href="https://github.com/kubernetes/minikube/">Minikube</a>. <a href="#how-to-setup-minikube">How to setup Minikube</a>.</li>
+<li>Installed <a href="https://kubernetes.io/docs/tasks/tools/#kubectl">kubectl</a></li>
+<li>Installed <a href="https://helm.sh/">Helm</a>.</li>
+<li>Installed <a href="#installing-dependencies">dependencies</a></li>
+</ol>
+<h3 id="installing-dependencies">Installing dependencies</h3>
+<p>To install and/or update run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>helm dependency update
+</span></span></code></pre></div><h3 id="optional-steps">Optional steps</h3>
+<ol>
+<li>
+<p>Ingress configuration for the Traefik ingress controller is enabled by default.</p>
+<p>Note for Minikube use:</p>
+<ul>
+<li>because the Traefik creates its main service with <code>Loadbalanser</code> type,
+which involve the assignment of externalIP by Cloud, what never happens on Minikube,
+you need to explicitly set the externalIP address for the traefic service.
+Add the following to <code>values.override.yaml</code> file:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">traefik</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">service</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">externalIPs</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;your minikube IP (can be obtained with `minikube ip` command)&#34;</span>
+</span></span></code></pre></div></li>
+<li>Also ensure that your CVAT ingress appears on your hosts file (/etc/hosts).
+You can do this by running this command:
+<code>cvat.local</code> is default domainname, you can override it via <code>values.override.yaml</code>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>minikube ip<span style="color:#66d9ef">)</span><span style="color:#e6db74"> cvat.local&#34;</span> | sudo tee -a /etc/hosts
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<ol>
+<li>Create <code>values.override.yaml</code> file inside <code>helm-chart</code> directory.</li>
+<li>Fill <code>values.override.yaml</code> with new parameters for chart.</li>
+<li>Override <a href="#postgresql-password">postgresql password</a></li>
+</ol>
+<h3 id="postgresql-password">Postgresql password?</h3>
+<p>Put below into your <code>values.override.yaml</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">postgresql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">secret</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">&lt;insert_password&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">postgres_password</span>: <span style="color:#ae81ff">&lt;insert_postgres_password&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">replication_password</span>: <span style="color:#ae81ff">&lt;insert_replication_password&gt;</span>
+</span></span></code></pre></div><p>Or create your own secret and use it with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">postgresql</span>:
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">global</span>:
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">postgresql</span>:
+</span></span><span style="display:flex;"><span>       <span style="color:#f92672">existingSecret</span>: <span style="color:#ae81ff">&lt;secret&gt;</span>
+</span></span></code></pre></div><h3 id="optional-enable-auto-annotation-feature">(Optional) Enable Auto annotation feature</h3>
+<p>Before starting, ensure that the following prerequisites are met:</p>
+<ul>
+<li>The Nuclio <a href="https://nuclio.io/docs/latest/reference/nuctl/nuctl/">CLI (nuctl)</a> is installed.
+To install the CLI, simply <a href="https://github.com/nuclio/nuclio/releases">download</a>
+the appropriate CLI version to your installation machine.</li>
+</ul>
+<ol>
+<li>
+<p>Set <code>nuclio.enabled: true</code> in your <code>values.override.yaml</code></p>
+</li>
+<li>
+<p>Run <code>helm dependency update</code> in <code>helm-chart</code> directory</p>
+</li>
+<li>
+<p>Because Nuclio functions are images that need to be pushed and pulled to/from the registry,
+you need to configure credentials to pull from your preferable registry with the following settings:
+Options:</p>
+<ul>
+<li>
+<p><code>values.override.yaml</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">registry</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">loginUrl</span>: <span style="color:#ae81ff">someurl</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">credentials</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">someuser</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">somepass</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Or you can create a secret with credentials as described in the <a href="https://nuclio.io/docs/latest/setup/k8s/running-in-production-k8s/#the-preferred-deployment-method">guide</a>
+and set <code>registry.secretName=your-registry-credentials-secret-name</code> in the <code>values.override.yaml</code> file.</p>
+</li>
+<li>
+<p>In the case of using Minikube, you can run a local unsecured registry with minikube add-ons:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>minikube addons enable registry
+</span></span><span style="display:flex;"><span>minikube addons enable registry-aliases
+</span></span></code></pre></div><p>Before Docker container images can be pushed to your newly created insecure registry,
+you need to add its address (<code>$(minikube ip):5000</code>) to the list of insecure registries to
+instruct Docker to accept working against it:
+follow the instructions in the <a href="https://docs.docker.com/registry/insecure/#deploy-a-plain-http-registry">Docker documentation</a></p>
+</li>
+</ul>
+<p>You might also need to log into your registry account (docker login)
+on the installation machine before running the deployment command.</p>
+</li>
+<li>
+<p>Create cvat project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nuctl --namespace &lt;your cvat namespace&gt; create project cvat
+</span></span></code></pre></div></li>
+<li>
+<p>Finally deploy the function, i.e.:</p>
+<ul>
+<li>using minikube registry:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nuctl deploy --project-name cvat --path serverless/tensorflow/faster_rcnn_inception_v2_coco/nuclio --registry <span style="color:#66d9ef">$(</span>minikube ip<span style="color:#66d9ef">)</span>:5000 --run-registry registry.minikube
+</span></span></code></pre></div></li>
+<li>using Docker hub:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nuctl deploy --project-name cvat --path serverless/tensorflow/faster_rcnn_inception_v2_coco/nuclio --registry docker.io/your_username
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ol>
+<h3 id="analytics">Analytics</h3>
+<p>Analytics is enabled by default, to disable set <code>analytics.enabled: false</code> in your <code>values.override.yaml</code></p>
+<h2 id="deployment">Deployment</h2>
+<p>Make sure you are using correct kubernetes context. You can check it with <code>kubectl config current-context</code>.</p>
+<blockquote>
+<p><strong>Warning:</strong> The k8s service name of Open Policy Agent is fixed to opa by default.
+This is done to be compatible with CVAT 2.0 but limits this helm chart to a single release per namespace.
+The OPA url currently can´t be set as an environment variable.
+As soon as this is possible you can set cvat.opa.composeCompatibleServiceName
+to false in your value.override.yaml and configure the opa url as additional env.</p>
+</blockquote>
+<p>Execute following command from repo root directory</p>
+<h3 id="with-overrides">With overrides:</h3>
+<p><code>helm upgrade -n &lt;desired_namespace&gt; &lt;release_name&gt; -i --create-namespace ./helm-chart -f ./helm-chart/values.yaml  -f ./helm-chart/values.override.yaml</code></p>
+<h3 id="without-overrides">Without overrides:</h3>
+<p><code>helm upgrade -n &lt;desired_namespace&gt; &lt;release_name&gt; -i --create-namespace ./helm-chart -f ./helm-chart/values.yaml</code></p>
+<h2 id="post-deployment-configuration">Post-deployment configuration</h2>
+<ol>
+<li>Create <a href="#how-to-create-superuser">super user</a></li>
+</ol>
+<h3 id="how-to-create-superuser">How to create superuser?</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>HELM_RELEASE_NAMESPACE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;desired_namespace&gt;&#34;</span> <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>HELM_RELEASE_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;release_name&gt;&#34;</span> <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>BACKEND_POD_NAME<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl get pod --namespace $HELM_RELEASE_NAMESPACE -l tier<span style="color:#f92672">=</span>backend,app.kubernetes.io/instance<span style="color:#f92672">=</span>$HELM_RELEASE_NAME -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.items[0].metadata.name}&#39;</span><span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span><span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>kubectl exec -it --namespace $HELM_RELEASE_NAMESPACE $BACKEND_POD_NAME -c cvat-backend-app-container -- python manage.py createsuperuser
+</span></span></code></pre></div><h2 id="faq">FAQ</h2>
+<h3 id="what-is-kubernetes-and-how-it-is-working">What is kubernetes and how it is working?</h3>
+<p>See <a href="https://kubernetes.io/">https://kubernetes.io/</a></p>
+<h3 id="what-is-helm-and-how-it-is-working">What is helm and how it is working?</h3>
+<p>See <a href="https://helm.sh/">https://helm.sh/</a></p>
+<h3 id="how-to-setup-minikube">How to setup Minikube</h3>
+<ol>
+<li>Please follow the official Minikube installation <a href="https://minikube.sigs.k8s.io/docs/start/">guide</a></li>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>minikube start --addons registry,registry-aliases
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="how-to-understand-what-diff-will-be-inflicted-by-helm-upgrade">How to understand what diff will be inflicted by &lsquo;helm upgrade&rsquo;?</h3>
+<p>You can use <a href="https://github.com/databus23/helm-diff#install">https://github.com/databus23/helm-diff#install</a> for that</p>
+<h3 id="i-want-to-use-my-own-postgresql-with-your-chart">I want to use my own postgresql with your chart.</h3>
+<p>Just set <code>postgresql.enabled</code> to <code>false</code> in the override file, then put the parameters of your database
+instance in the <code>external</code> field.
+You may also need to configure <code>username</code>, <code>database</code> and <code>password</code> fields
+to connect to your own database:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">postgresql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">external</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">host</span>: <span style="color:#ae81ff">postgresql.default.svc.cluster.local</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5432</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">auth</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">cvat</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">database</span>: <span style="color:#ae81ff">cvat</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">secret</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">cvat_postgresql</span>
+</span></span></code></pre></div><p>In example above corresponding secret will be created automatically, but if you want to use existing secret change <code>secret.create</code> to <code>false</code> and set <code>name</code> of existing secret:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">postgresql</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">external</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">host</span>: <span style="color:#ae81ff">postgresql.default.svc.cluster.local</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5432</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">secret</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">create</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;my-postgresql-secret&#34;</span>
+</span></span></code></pre></div><p>The secret must contain the <code>database</code>, <code>username</code> and <code>password</code>
+keys to access to the database
+like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Secret</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;my-postgresql-secret&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">type</span>: <span style="color:#ae81ff">generic</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">stringData</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">database</span>: <span style="color:#ae81ff">cvat</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">username</span>: <span style="color:#ae81ff">cvat</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">password</span>: <span style="color:#ae81ff">secretpassword</span>
+</span></span></code></pre></div><h3 id="i-want-to-use-my-own-redis-with-your-chart">I want to use my own redis with your chart.</h3>
+<p>Just set <code>redis.enabled</code> to <code>false</code> in the override file, then put the parameters of your Redis
+instance in the <code>external</code> field.
+You may also need to configure <code>password</code> field to connect to your own Redis:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">redis</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">external</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">host</span>: <span style="color:#ae81ff">redis.hostname.local</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">secret</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">cvat_redis</span>
+</span></span></code></pre></div><p>In the above example the corresponding secret will be created automatically, but if you want to use an existing secret
+change <code>secret.create</code> to <code>false</code> and set <code>name</code> of the existing secret:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">redis</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">external</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">host</span>: <span style="color:#ae81ff">redis.hostname.local</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">secret</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">create</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;my-redis-secret&#34;</span>
+</span></span></code></pre></div><p>The secret must contain the <code>redis-password</code> key like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Secret</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;my-redis-secret&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">type</span>: <span style="color:#ae81ff">generic</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">stringData</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">redis-password</span>: <span style="color:#ae81ff">secretpassword</span>
+</span></span></code></pre></div><h3 id="i-want-to-override-some-settings-in-valuesyaml">I want to override some settings in values.yaml.</h3>
+<p>Just create file <code>values.override.yaml</code> and place your changes here, using same structure as in <code>values.yaml</code>.
+Then reference it in helm update/install command using <code>-f</code> flag</p>
+<h3 id="why-you-used-external-charts-to-provide-redis-and-postgres">Why you used external charts to provide redis and postgres?</h3>
+<p>Because they definitely know what they do better then we are, so we are getting more quality and less support</p>
+<h3 id="how-to-use-custom-domain-name-with-k8s-deployment">How to use custom domain name with k8s deployment:</h3>
+<p>The default value <code>cvat.local</code> may be overridden with <code>--set ingress.hosts[0].host</code> option like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>helm upgrade -n default cvat -i --create-namespace helm-chart -f helm-chart/values.yaml -f helm-chart/values.override.yaml --set ingress.hosts<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.host<span style="color:#f92672">=</span>YOUR_FQDN
+</span></span></code></pre></div><h3 id="how-to-fix-fail-of-helm-upgrade-due-label-field-is-immutable-reason">How to fix fail of <code>helm upgrade</code> due label field is immutable reason?</h3>
+<p>If an error message like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Error: UPGRADE FAILED:cannot patch <span style="color:#e6db74">&#34;cvat-backend-server&#34;</span> with kind Deployment: Deployment.apps <span style="color:#e6db74">&#34;cvat-backend-server&#34;</span> is invalid: spec.selector: Invalid value: v1.LabelSelector<span style="color:#f92672">{</span>MatchLabels:map<span style="color:#f92672">[</span>string<span style="color:#f92672">]</span>string<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;app&#34;</span>:<span style="color:#e6db74">&#34;cvat-app&#34;</span>, <span style="color:#e6db74">&#34;app.kubernetes.io/instance&#34;</span>:<span style="color:#e6db74">&#34;cvat&#34;</span>, <span style="color:#e6db74">&#34;app.kubernetes.io/managed-by&#34;</span>:<span style="color:#e6db74">&#34;Helm&#34;</span>, <span style="color:#e6db74">&#34;app.kubernetes.io/name&#34;</span>:<span style="color:#e6db74">&#34;cvat&#34;</span>, <span style="color:#e6db74">&#34;app.kubernetes.io/version&#34;</span>:<span style="color:#e6db74">&#34;latest&#34;</span>, <span style="color:#e6db74">&#34;component&#34;</span>:<span style="color:#e6db74">&#34;server&#34;</span>, <span style="color:#e6db74">&#34;helm.sh/chart&#34;</span>:<span style="color:#e6db74">&#34;cvat&#34;</span>, <span style="color:#e6db74">&#34;tier&#34;</span>:<span style="color:#e6db74">&#34;backend&#34;</span><span style="color:#f92672">}</span>, MatchExpressions:<span style="color:#f92672">[]</span>v1.LabelSelectorRequirement<span style="color:#f92672">(</span>nil<span style="color:#f92672">)}</span>: field is immutable
+</span></span></code></pre></div><p>To fix that, delete CVAT Deployments before upgrading</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl delete deployments --namespace<span style="color:#f92672">=</span>foo -l app<span style="color:#f92672">=</span>cvat-app
+</span></span></code></pre></div><h3 id="how-to-use-existing-persistentvolume-to-store-cvat-data-instead-of-default-storage">How to use existing PersistentVolume to store CVAT data instead of default storage</h3>
+<p>It is assumed that you have created a PersistentVolumeClaim named <code>my-claim-name</code>
+and a PersistentVolume that backing the claim.
+Claims must exist in the same namespace as the Pod using the claim.
+For details <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes">see</a>.
+Add these values in the <code>values.override.yaml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">cvat</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">backend</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">permissionFix</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">defaultStorage</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">server</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">additionalVolumes</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cvat-backend-data</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">my-claim-name</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">worker</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">export</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">additionalVolumes</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cvat-backend-data</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">my-claim-name</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">import</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">additionalVolumes</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cvat-backend-data</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">my-claim-name</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">annotation</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">additionalVolumes</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cvat-backend-data</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">my-claim-name</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">utils</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">additionalVolumes</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cvat-backend-data</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">my-claim-name</span>
+</span></span></code></pre></div>
+      </main>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.js"></script>
+<script defer src="/js/click-to-copy.js" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
