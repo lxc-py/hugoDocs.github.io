@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>用多边形标注 on 宜美智自训练</title>
-    <link>//localhost:1313/docs/manual/advanced/annotation-with-polygons/</link>
+    <link>/docs/manual/advanced/annotation-with-polygons/</link>
     <description>Recent content in 用多边形标注 on 宜美智自训练</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <atom:link href="//localhost:1313/docs/manual/advanced/annotation-with-polygons/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/docs/manual/advanced/annotation-with-polygons/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>手动绘制</title>
-      <link>//localhost:1313/docs/manual/advanced/annotation-with-polygons/manual-drawing/</link>
+      <link>/docs/manual/advanced/annotation-with-polygons/manual-drawing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/annotation-with-polygons/manual-drawing/</guid>
+      <guid>/docs/manual/advanced/annotation-with-polygons/manual-drawing/</guid>
       <description>它用于语义/实例分割.&#xA;在开始之前，您需要在控制栏上选择多边形并选择正确的标签.&#xA;点击“形状”进入绘图模式. 有两种绘制多边形的方法: 通过点击或在屏幕上拖动鼠标同时按住“Shift”创建点. 点击 按住Shift+拖拽 未按Shift键时，可以放大/缩小(滚动鼠标滚轮时) 和移动(点击鼠标滚轮并移动鼠标时), 也可以右键删除前一点. 你可以使用对象侧边栏中的选定不透明度滑块来改变多边形的不透明度. 您可以在对象侧边栏章节中阅读更多内容. 再次按N或点击顶部面板上的完成按钮来完成形状. 创建多边形后，您可以移动点或通过右键单击并选择删除点来删除它们 或在上下文菜单中按下Alt键单击. </description>
     </item>
     <item>
       <title>使用自动边界绘图</title>
-      <link>//localhost:1313/docs/manual/advanced/annotation-with-polygons/automatic-borders/</link>
+      <link>/docs/manual/advanced/annotation-with-polygons/automatic-borders/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/annotation-with-polygons/automatic-borders/</guid>
+      <guid>/docs/manual/advanced/annotation-with-polygons/automatic-borders/</guid>
       <description>绘制多边形时可以使用自动边框. 使用自动边框可以自动跟踪标注中现有多边形的轮廓.&#xA;要做到这一点，请进入设置-&amp;gt;工作区选项卡并启用自动边界 或在绘制多边形时按Ctrl键.&#xA;开始绘制/编辑多边形.&#xA;其他形状的点将被突出显示，这意味着多边形可以附加到它们上.&#xA;定义要重复的多边形路径部分.&#xA;点击轮廓部分的第一个点.&#xA;然后单击位于路径部分的任何点。选中的点将以紫色高亮显示.&#xA;点击最后一个点，这个点的轮廓将自动生成.&#xA;此外，您可以在点数字段中设置固定的点数, 然后自动停止绘制. 要启用拖动，你应该在多边形内部右键单击并选择切换固定属性.&#xA;下面你可以看到不透明度和黑色描边的效果:&#xA;如果您需要标注小物体, 请将创建任务对话框中的图像质量增加到95，以便您方便.</description>
     </item>
     <item>
       <title>编辑多边形</title>
-      <link>//localhost:1313/docs/manual/advanced/annotation-with-polygons/edit-polygon/</link>
+      <link>/docs/manual/advanced/annotation-with-polygons/edit-polygon/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/annotation-with-polygons/edit-polygon/</guid>
+      <guid>/docs/manual/advanced/annotation-with-polygons/edit-polygon/</guid>
       <description>要编辑一个多边形，你必须在按住Shift的同时点击它，它将打开多边形编辑器.&#xA;在编辑器中，您可以创建新的点或通过关闭另一个点上的线来删除多边形的一部分.&#xA;当智能多边形裁剪选项在设置中激活时, 考虑两个标准来决定在自动编辑过程中应该切断多边形的哪一部分.&#xA;第一个标准是切割点的数量. 第二个标准是切割曲线的长度. 如果两个标准都建议切割相同的部分，则算法自动工作，如果不是，则必须由用户做出决定. 如果你想手动选择一个多边形的哪一部分应该被切断, 在设置中禁用智能多边形裁剪。 在这种情况下，关闭多边形后，您可以选择要保留的多边形部分.&#xA;您可以按Esc取消编辑.</description>
     </item>
   </channel>

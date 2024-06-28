@@ -2,100 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/docs/manual/basics/</loc>
+    <loc>/docs/manual/basics/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/annotation-with-polygons/manual-drawing/</loc>
+    <loc>/docs/manual/advanced/annotation-with-polygons/manual-drawing/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/projects/</loc>
+    <loc>/docs/manual/advanced/projects/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/getting_started/</loc>
+    <loc>/docs/getting_started/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/registration/</loc>
+    <loc>/docs/manual/basics/registration/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/create_an_annotation_task/</loc>
+    <loc>/docs/manual/basics/create_an_annotation_task/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/</loc>
+    <loc>/docs/manual/advanced/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/search/</loc>
+    <loc>/docs/manual/advanced/search/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/annotation-with-polygons/automatic-borders/</loc>
+    <loc>/docs/manual/advanced/annotation-with-polygons/automatic-borders/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/organization/</loc>
+    <loc>/docs/manual/advanced/organization/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/shape-mode-advanced/</loc>
+    <loc>/docs/manual/advanced/shape-mode-advanced/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/annotation-with-polygons/edit-polygon/</loc>
+    <loc>/docs/manual/advanced/annotation-with-polygons/edit-polygon/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/</loc>
+    <loc>/docs/manual/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/jobs-page/</loc>
+    <loc>/docs/manual/basics/jobs-page/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/tasks-page/</loc>
+    <loc>/docs/manual/basics/tasks-page/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/task-details/</loc>
+    <loc>/docs/manual/basics/task-details/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/interface/</loc>
+    <loc>/docs/manual/basics/interface/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/annotation-with-rectangles/</loc>
+    <loc>/docs/manual/advanced/annotation-with-rectangles/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/basic-navigation/</loc>
+    <loc>/docs/manual/basics/basic-navigation/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/train/train-process/</loc>
+    <loc>/docs/train/train-process/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/annotation-with-polygons/</loc>
+    <loc>/docs/manual/advanced/annotation-with-polygons/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/top-panel/</loc>
+    <loc>/docs/manual/basics/top-panel/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/train/label-json/</loc>
+    <loc>/docs/train/label-json/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/controls-sidebar/</loc>
+    <loc>/docs/manual/basics/controls-sidebar/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/train/valid/</loc>
+    <loc>/docs/train/valid/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/objects-sidebar/</loc>
+    <loc>/docs/manual/basics/objects-sidebar/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/annotation-with-ellipses/</loc>
+    <loc>/docs/manual/advanced/annotation-with-ellipses/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/workspace/</loc>
+    <loc>/docs/manual/basics/workspace/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/ai-tools/</loc>
+    <loc>/docs/manual/advanced/ai-tools/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/settings/</loc>
+    <loc>/docs/manual/basics/settings/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/types-of-shapes/</loc>
+    <loc>/docs/manual/basics/types-of-shapes/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/automatic-annotation/</loc>
+    <loc>/docs/manual/advanced/automatic-annotation/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/backup/</loc>
+    <loc>/docs/manual/advanced/backup/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/shape-mode-basics/</loc>
+    <loc>/docs/manual/basics/shape-mode-basics/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/delete_frame/</loc>
+    <loc>/docs/manual/advanced/delete_frame/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/export-import-datasets/</loc>
+    <loc>/docs/manual/advanced/export-import-datasets/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/</loc>
+    <loc>/docs/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/basics/vocabulary/</loc>
+    <loc>/docs/manual/basics/vocabulary/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/shortcuts/</loc>
+    <loc>/docs/manual/advanced/shortcuts/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/filter/</loc>
+    <loc>/docs/manual/advanced/filter/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/review/</loc>
+    <loc>/docs/manual/advanced/review/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/manual/advanced/shape-grouping/</loc>
+    <loc>/docs/manual/advanced/shape-grouping/</loc>
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>/categories/</loc>
   </url><url>
-    <loc>//localhost:1313/search/</loc>
+    <loc>/search/</loc>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>/tags/</loc>
   </url><url>
-    <loc>//localhost:1313/</loc>
+    <loc>/</loc>
   </url><url>
-    <loc>//localhost:1313/docs/train/</loc>
+    <loc>/docs/train/</loc>
   </url><url>
-    <loc>//localhost:1313/about/</loc>
+    <loc>/about/</loc>
   </url>
 </urlset>

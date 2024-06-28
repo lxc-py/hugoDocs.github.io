@@ -2,114 +2,114 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>高级 on 宜美智自训练</title>
-    <link>//localhost:1313/docs/manual/advanced/</link>
+    <link>/docs/manual/advanced/</link>
     <description>Recent content in 高级 on 宜美智自训练</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <atom:link href="//localhost:1313/docs/manual/advanced/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/docs/manual/advanced/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>项目页面</title>
-      <link>//localhost:1313/docs/manual/advanced/projects/</link>
+      <link>/docs/manual/advanced/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/projects/</guid>
+      <guid>/docs/manual/advanced/projects/</guid>
       <description>项目页面 在此页上，您可以创建新项目，从备份创建项目，还可以查看已创建的项目.&#xA;在左上角有一个搜索栏，使用该搜索栏可以通过项目名称、分配人等找到项目. 右上角有排序，快速筛选和筛选.&#xA;筛选 应用筛选需禁用快速筛选.&#xA;筛选的工作原理与标注筛选类似, 你可以从属性中创建筛选规则, 操作符 和值并将规则分组. 更多细节，请参阅筛选部分. 了解更多关于日期和时间选择.&#xA;要清除所有筛选，请按清除筛选.&#xA;项目列表支持的属性 属性 支持的值 描述 分配人员 用户名 分配人是从事项目的用户. (在项目详情指定) 所有者 用户名 拥有项目的用户 上次更新 最近修改的日期和时间(或取值范围) 日期可以以dd.MM.yyyy HH:mm的格式输入 或者当你点击输入框时，选择出现在窗口中的日期 ID 项目ID的数字或范围 名称 名字 在“任务”页上-任务的名称，&#xA;在“项目”页上-项目的名称 设备 AOI和AVI 检测设备 模型属性 内层 酸性外层 金OSP等 AOI下的工序和AVI下的表面处理 创建项目 在自训练平台，您可以创建包含相同类型任务的项目. 所有与项目相关的任务都将继承一个标签列表.&#xA;要创建项目，请单击顶部菜单中的项目项，进入项目部分. 在“项目”页上，您可以看到项目列表，使用搜索, 或者通过点击+按钮并选择创建新项目来创建一个新项目.&#xA;注意，项目将在创建时选择的组织中创建. 阅读更多关于组织的信息.&#xA;你可以更改:项目名称, 检测设备(可选)标签列表(将用于作为项目的一部分创建的任务).&#xA;如果需要使用项目数据去训练,请设置相应检测设备和工序\表面&#xA;了解更多关于创建标签列表.&#xA;要保存和打开项目，请单击提交&amp;amp;打开按钮。你也 可以点击提交&amp;amp;继续按钮来依次创建多个项目&#xA;创建后，项目将出现在项目页面上。要打开一个项目，只需单击它.&#xA;在这里，您可以执行以下操作:&#xA;更改项目的标题.&#xA;打开动作菜单。每个按钮负责动作菜单中的特定功能:&#xA;导出/导入数据集 - 下载/上传特定格式的标注或标注和图像. 更多信息请参阅导出/导入数据集 章节. 备份项目 - 做一个项目备份 详情请参阅备份章节. 删除 - 删除项目和所有相关任务.</description>
     </item>
     <item>
       <title>搜索</title>
-      <link>//localhost:1313/docs/manual/advanced/search/</link>
+      <link>/docs/manual/advanced/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/search/</guid>
+      <guid>/docs/manual/advanced/search/</guid>
       <description> 搜索所有字段(所有者、分配人、任务名称、任务状态). 要执行，请在搜索字段中输入搜索文本. </description>
     </item>
     <item>
       <title>组织</title>
-      <link>//localhost:1313/docs/manual/advanced/organization/</link>
+      <link>/docs/manual/advanced/organization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/organization/</guid>
+      <guid>/docs/manual/advanced/organization/</guid>
       <description>组织是指由多个用户组成的团队在项目中一起工作并共享任务的特性.&#xA;创建一个组织，邀请你的团队成员，并分配角色，以使团队更好地完成共享的任务.&#xA;参阅:&#xA;个人工作区 新建组织 切换组织 组织页面 邀请成员进入组织 删除组织 个人工作区 当没有选择组织时，帐户的默认状态是激活的.&#xA;如果您没有选择一个组织，系统会将所有新资源直接链接到您的个人账户，从而阻止与他人共享资源.&#xA;当个人工作区被选中时，它将在菜单中被标记为一个标记.&#xA;新建组织 要创建一个组织，请执行以下操作:&#xA;登陆自训练平台.&#xA;在顶部菜单中，点击你的用户名 &amp;gt; 组织 &amp;gt; + 创建.&#xA;填写以下字段并单击提交&#xA;字段 描述 简短名称 将显示在菜单中的组织名称. 完整名称 可选的。组织的全称. 描述 可选的。组织描述. 电子邮箱 可选的。你的电子邮件. 电话号码 可选的。你的电话号码. 地址 可选的。组织地址. 创建后，组织页面将自动打开.&#xA;如果想要将来访问您的组织，请访问用户名 &amp;gt; 组织&#xA;备注, 如果你创建了超过10个组织, 下拉菜单中会出现一行切换组织.&#xA;切换组织 如果你有多个组织， 可以在任何给定的时间在这些组织之间切换.&#xA;按照这些步骤操作:&#xA;在顶部菜单中，选择您的用户名 &amp;gt; 组织. 在个人空间部分的下拉菜单中, 选择您想要的组织. 组织页面 组织页面是一个可以编辑组织信息和管理组织成员的地方.&#xA;备注 为了访问组织页面，你必须首先激活 该组织 (详情请参阅 切换组织). 如果没有激活，组织页面将保持不可访问. 当在下拉菜单中勾选一个组织，并且该组织的名称在右上角的用户名下可见时, 则认为该组织已激活.&#xA;要进入组织页面，请执行以下操作:&#xA;在顶部菜单中，点击你的用户名 &amp;gt; 组织. 在下拉菜单中选择组织. 在下拉菜单中，单击设置. 邀请成员进入组织 要向组织添加成员，请执行以下操作:</description>
     </item>
     <item>
       <title>形状模式(高级)</title>
-      <link>//localhost:1313/docs/manual/advanced/shape-mode-advanced/</link>
+      <link>/docs/manual/advanced/shape-mode-advanced/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/shape-mode-advanced/</guid>
+      <guid>/docs/manual/advanced/shape-mode-advanced/</guid>
       <description>该模式下的基础操作已在这一部分介绍: 形状模式(基础).&#xA;遮挡 遮挡是一个属性，当一个对象被另一个对象遮挡，或者在帧上不完全可见时使用. 使用快捷方式Q快速设置属性.&#xA;示例:下图中的三辆车应该标记为被遮挡.&#xA;如果一个框架包含太多的对象，并且由于许多形状大多放置在同一个位置， 所以很难对它们进行标注，那么将它们锁定是有意义的 锁定对象的形状是透明的，并且很容易标注新对象 此外，您不能意外地更改之前注释过的对象。快捷方式:L</description>
     </item>
     <item>
       <title>用矩形标注</title>
-      <link>//localhost:1313/docs/manual/advanced/annotation-with-rectangles/</link>
+      <link>/docs/manual/advanced/annotation-with-rectangles/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/annotation-with-rectangles/</guid>
+      <guid>/docs/manual/advanced/annotation-with-rectangles/</guid>
       <description>要了解有关使用矩形进行标注的更多信息，请参阅各节:&#xA;形状模式 (基础) 形状模式 (高级) 矩形旋转 要旋转矩形，拉旋转点. 旋转是围绕矩形的中心进行的. 以固定的角度旋转(15度的倍数),按住shift键。 在旋转的过程中，可以看到旋转的角度.&#xA;用矩形标注4点 这里提出了一种有效的边界框标注方法. 在开始之前，您需要确保选择4点绘制方法.&#xA;按形状进入绘图模式。点击四个极值点: 物体上最上面、最下面、最左边和最右边的物理点. 点击第四个点后，绘图将自动完成. 按Esc取消编辑.</description>
     </item>
     <item>
       <title>用椭圆标注</title>
-      <link>//localhost:1313/docs/manual/advanced/annotation-with-ellipses/</link>
+      <link>/docs/manual/advanced/annotation-with-ellipses/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/annotation-with-ellipses/</guid>
+      <guid>/docs/manual/advanced/annotation-with-ellipses/</guid>
       <description>用于道路标志标注 工业中标隔离圈 通孔等用于分割.&#xA;先，你需要选择控制栏上的椭圆.&#xA;选择一个标签，然后点击形状开始绘制. 椭圆的创建方法与矩形相同, 你需要指定两个相对的点, 这个椭圆会被嵌在一个想象的矩形中. 按N或点击顶部面板上的完成按钮来完成形状.&#xA;你可以使用旋转点旋转椭圆，方法与矩形相同.</description>
     </item>
     <item>
       <title>OpenCV和AI工具</title>
-      <link>//localhost:1313/docs/manual/advanced/ai-tools/</link>
+      <link>/docs/manual/advanced/ai-tools/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/ai-tools/</guid>
+      <guid>/docs/manual/advanced/ai-tools/</guid>
       <description>在AI和OpenCV工具的帮助下，以半自动和自动模式对数据进行标注.&#xA;参阅:&#xA;交互器 AI工具: 使用交互器标注 AI工具: 增加额外的点 AI工具: 删除点 OpenCV: 智能剪刀 设置 交互器模型 目标检测 标签匹配 使用目标检测标注 目标检测模型 交互器 交互器是AI和OpenCV工具的一部分.&#xA;使用交互器标记图像中的对象 半自动创建多边形.&#xA;创建多边形时，可以使用正点 或者是负点(对于某些模型):&#xA;正点定义对象所在的区域。 负点定义对象不在的区域。 AI工具: 使用交互器标注 要使用交互器进行标注，请执行以下操作:&#xA;点击魔术棒 , 然后转到交互器标签页. 从标签下拉菜单中，选择多边形的标签. 从交互器下拉菜单中，选择一个模型 (详阅 交互器模型). 点击问号以查看每个模型的信息: (可选)如果模型返回掩膜，你需要 转换掩膜到多边形，使用转换掩膜到多边形切换. 点击 交互. 左键点击可添加正点，右键点击可添加负点. 可以添加的点数取决于模型. 在顶部菜单, 点击 完成 (或者 Shift+N, N). AI工具: 增加额外的点 **注意:**更多的点可以提高轮廓的准确性，但会使形状编辑更加困难. 较少的点使形状编辑更容易，但降低了轮廓精度.&#xA;每个模型都有一个用于注释的最小所需点数。 一旦达到了所需的点数，就开始请求自动发送到服务器。 服务器处理请求并向帧中添加一个多边形。&#xA;为了得到一个更准确的轮廓, 首先推迟服务器的请求来增加点数:&#xA;按住Ctrl键. 在顶部面板上，推迟按钮将变成蓝色. 向图像中添加点. 当准备好时，松开Ctrl键. 如果你在对象完成时使用了将掩膜转为多边形， 你可以像编辑多边形一样编辑它.&#xA;你可以用滑块改变多边形的点数:&#xA;AI工具: 删除点 要删除一个点，请执行以下操作:&#xA;将光标悬停在要删除的点上. 如果这个点可以被删除，它会放大，光标会变成一个十字. 左键点击这个点. OpenCV: 智能剪刀 要使用智能剪刀, 请执行以下操作:</description>
     </item>
     <item>
       <title>自动标注</title>
-      <link>//localhost:1313/docs/manual/advanced/automatic-annotation/</link>
+      <link>/docs/manual/advanced/automatic-annotation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/automatic-annotation/</guid>
+      <guid>/docs/manual/advanced/automatic-annotation/</guid>
       <description>宜美智自训练中的自动标注是一种您可以使用预训练模型自动预标注数据的工具.&#xA;参见:&#xA;运行自动标注 标签匹配 模型 运行自动标注 要开始自动标注，请执行以下操作:&#xA;在顶部菜单上，单击任务.&#xA;找到你想标注的任务，点击动作 &amp;gt; 自动标注.&#xA;在自动标注对话框中，从下拉列表中选择一个 模型.&#xA;匹配 模型和任务的标签.&#xA;(可选)如果您需要改变预标注的阈值，可填入阈值(区间为(0,1)) 默认0.5.&#xA;(可选)如果你需要删除所有之前的标注，切换到清除旧标注。&#xA;1.点击标注.&#xA;后会在进度条上显示注释的进度.&#xA;单击“取消”可以随时停止自动标注.&#xA;标签匹配 每个模型都是在数据集上训练的，并且只支持数据集的标签.&#xA;例如:&#xA;DL模型的标签为 缺口. 你的任务(或项目)的标签是针孔. 为了进行标注，您需要匹配这两个标签以给DL模型一个提示， 在本例中为缺口 = 针孔。&#xA;如果你有一个不在DL标签列表中的标签，你将无法匹配它们.&#xA;模型 模型 描述 内层 用于AOI内层检测使用的AI模型 酸性外层 用于AOI酸性外层检测使用的AI模型 碱性外层 用于AOI碱性外层检测使用的AI模型 树脂塞孔 用于AOI树脂塞孔检测使用的AI模型 金OSP 用于AVI金OSP 检测使用的AI模型 </description>
     </item>
     <item>
       <title>备份任务和项目</title>
-      <link>//localhost:1313/docs/manual/advanced/backup/</link>
+      <link>/docs/manual/advanced/backup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/backup/</guid>
+      <guid>/docs/manual/advanced/backup/</guid>
       <description>概述 在标注平台上，您可以备份任务和项目。 这可以用于备份您PC上的任务或项目，或传输到另一台服务器.&#xA;创建备份 要备份任务或项目，请打开操作菜单并选择“备份任务”或“备份项目”。.&#xA;(可选) 在自定义文件名文本字段中指定备份文件名称, 否则备份项目的文件名称将由掩码 project_&amp;lt;项目名&amp;gt;_backup_&amp;lt;日期&amp;gt;_&amp;lt;时间&amp;gt;.zip给出 备份任务的文件名task_&amp;lt;任务名&amp;gt;_backup_&amp;lt;日期&amp;gt;_&amp;lt;时间&amp;gt;.zip.&#xA;从备份中创建 要从备份创建任务或项目，请转到任务或项目页面, 单击从备份创建按钮并选择所需的存档.&#xA;结果，您将得到一个任务，其中包含先前导出的任务的数据、参数和标注.&#xA;备份文件结构 结果，你会得到一个包含数据的zip存档, 任务或项目，任务规范和标注具有以下结构:&#xA;任务备份结构 项目备份结构 . ├── data │ └── {用户上传的数据} ├── task.json └── annotations.json . ├── task_{id} │ ├── data │ │ └── {用户上传的数据} │ ├── task.json │ └── annotations.json └── project.json </description>
     </item>
     <item>
       <title>删除帧</title>
-      <link>//localhost:1313/docs/manual/advanced/delete_frame/</link>
+      <link>/docs/manual/advanced/delete_frame/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/delete_frame/</guid>
+      <guid>/docs/manual/advanced/delete_frame/</guid>
       <description>删除帧 您可以从任务中删除当前帧. 这一帧既不会出现在UI中，也不会出现在导出的标注中. 因此，可以标记不受标注约束的损坏帧.&#xA;转到作业标注视图，点击删除图像按钮(Alt+Del).&#xA;备注: 当您使用快捷方式删除时, 该帧将立即被删除，无需额外确认.&#xA;之后，您将被要求确认帧删除.&#xA;备注: 该帧中的所有标注将被删除，未保存的标注将被保存 并且该帧将在标注视图中不可见(直到您在设置中使其可见). 如果任务中有一些重叠，并且删除的帧落在这个间隔内, 那么这将导致该帧在另一个作业中也不可用.&#xA;设置已删除帧的可见性和导航 I如果您需要启用显示删除的帧，您可以在设置中这样做.&#xA;进入设置，选择播放器设置.&#xA;点击显示已删除的帧复选框。然后关闭设置对话框.&#xA;然后，您将能够浏览已删除的帧. 但是标注工具将不可用。删除的帧在相应的叠加中不同.&#xA;有几种视图方法可以在不启用此选项的情况下浏览已删除的帧:&#xA;通过直接导航方法转到框架:导航滑块或框架输入字段, 通过直接链接进入框架. 带有步长的导航将不计算已删除的帧.&#xA;恢复删除的帧 您还可以在任务中恢复已删除的帧.&#xA;如前面所述，打开已删除帧的可见性，然后转到要恢复的已删除帧.&#xA;点击还原图标。框架将立即恢复.</description>
     </item>
     <item>
       <title>导出/导入数据集并上传标注</title>
-      <link>//localhost:1313/docs/manual/advanced/export-import-datasets/</link>
+      <link>/docs/manual/advanced/export-import-datasets/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/export-import-datasets/</guid>
+      <guid>/docs/manual/advanced/export-import-datasets/</guid>
       <description>导出数据集 可以将数据集导出到项目、任务或作业.&#xA;要下载最新的标注，必须首先保存所有更改. 点击保存按钮。有一个快捷键Ctrl+S来快速保存标注.&#xA;之后，点击菜单按钮. 任务和项目数据集的导出和导入通过动作菜单进行.&#xA;按导出数据集按钮.&#xA;选择导出数据集的格式.&#xA;要使用数据集下载图像，请启用保存图像选项.&#xA;(可选)要给结果归档文件命名，请使用自定义文件名字段.&#xA;导入数据集 您只能将数据集导入项目。在这种情况下，数据将被划分为子集. 要导入数据集，请在项目页面上执行以下操作:&#xA;打开 动作 menu. 按导入数据集按钮. 选择数据集格式(如果在导出期间没有指定自定义名称，则格式将在存档名称中). 将文件拖动到文件上传区域或单击上传区域，通过资源管理器选择该文件. 在导入过程中，您将能够跟踪导入的进度。&#xA;上传标注 在任务或作业中，您可以上传标注。 为此，在任务的动作菜单中或在顶部面板的作业菜单中选择上传标注项， 选择您计划上传标注的格式，并通过资源管理器选择标注文件或存档.</description>
     </item>
     <item>
       <title>快捷键</title>
-      <link>//localhost:1313/docs/manual/advanced/shortcuts/</link>
+      <link>/docs/manual/advanced/shortcuts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/shortcuts/</guid>
+      <guid>/docs/manual/advanced/shortcuts/</guid>
       <description>许多UI元素都有快捷提示。将你的指针指向一个必需的元素来查看它.&#xA;快捷键 常见 主要功能 F1 打开/隐藏可用快捷键列表 F2 打开/隐藏设置对话框 Ctrl+S 将标注的所有更改发送到服务器 Ctrl+Z 取消与对象相关的最新操作 Ctrl+Shift+Z 或 Ctrl+Y 取消撤消操作 按住鼠标滚轮 动图像帧(例如，在绘制时)。 播放器 F 转到下一帧 D 转到前一帧 V 向后移动多少帧，取决于设置里的步长 C 向前移动多少帧，取决于设置里的步长 -&amp;gt; 搜索满足筛选&#xA;的下一帧或包含任何对象的下一帧 &amp;lt;- 搜索满足筛选&#xA;的前一帧或包含任何对象的前一帧 空格 启动/停止自动换帧 ` 或 ~ 聚焦在元素上以改变当前帧 模式 N 用相同的参数重复最新的绘图过程 M 激活或禁用合并形状的模式 Alt+M 激活或停止分割形状的模式 CTRL+G 激活或停用模式来分组形状 Shift+G 重置选定形状的组(在组模式下) Esc 取消任何活动的画布模式 图像操作 Ctrl+R 改变图像角度(增加90度) Ctrl+Shift+R 改变图像角度(减去90度) G 显示/隐藏GERBER 对象的操作 Ctrl 在绘图/编辑期间切换多边形和折线的自动边界 按住 Ctrl 当形状处于活动状态时进行修复 在点上Alt+单击 删除点(当鼠标悬停在多边形、折线、点组成的点上时使用) 在点上Shift+单击 编辑形状(当鼠标悬停在多边形、折线或点的一个点上时使用) 在形状上-&amp;gt;-单击 显示对象侧边栏中的对象元素 T+L 更改侧边栏中所有对象的锁定状态 L 更改活动对象的锁定状态 T+H 更改侧边栏中对象的隐藏状态 H 更改活动对象的隐藏状态 Q 或 / 更改活动对象的锁定属性 Del 或 Shift+Del 删除活动对象。使用shift强制删除锁定对象 - 或 _ 把一个活动对象放到离用户更远的地方(减小z轴的值) + 或 = 将活动对象“更靠近”用户(增加z轴值) Ctrl+C 复制形状到内部剪贴板 Ctrl+V 从内部剪贴板粘贴一个形状 粘贴时按住Ctrl 当粘贴形状从缓冲区f或多次粘贴.</description>
     </item>
     <item>
       <title>筛选</title>
-      <link>//localhost:1313/docs/manual/advanced/filter/</link>
+      <link>/docs/manual/advanced/filter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/filter/</guid>
+      <guid>/docs/manual/advanced/filter/</guid>
       <description>使用该功能有一些原因:&#xA;使用筛选时，与过滤器不匹配的对象将被隐藏. 快速导航到包含感兴趣对象的帧之间. 你可以使用键盘上的左箭头和右箭头键来实现这个目的， 或者通过右键单击并选择通过筛选切换来自定义用户界面按钮。 如果没有与筛选条件匹配的对象，你将前进到包含任何已注释对象的前一帧或下一帧. 要使用筛选，你需要点击顶部面板上的按钮.&#xA;新建筛选 它将打开一个窗口用于筛选输入。在这里你会发现两个按钮:Add rule和Add group.&#xA;规则 Add rule按钮为对象显示添加规则。规则可以使用以下属性:&#xA;支持的标注属性 属性 支持的值 描述 标签 任务中的所有标签名称 标签名 类型 形状，轨迹或标签 对象的类型 形状 所有形状类型 形状的类型 覆盖 真或假 覆盖 (详情) 宽度 单位px 形状宽度 高度 单位px 形状高度 服务器ID 数字 服务器上对象的ID (您可以通过动作菜单形成到对象的链接来查找) 对象ID 数字 客户端中对象的ID (在对象侧栏中指出) 属性 其他一些字段包括具有&#xA;类似类型或特定属性值的属性 由标签指定的任何字段 项目列表的支持属性&#xA;任务列表的支持属性&#xA;作业列表的支持属性&#xA;支持的属性运算符 == - 等于; != - 不等于; &amp;gt; - 大于; &amp;gt;= - 大于等于; &amp;lt; - 小于; &amp;lt;= - 小于等于;</description>
     </item>
     <item>
       <title>质检</title>
-      <link>//localhost:1313/docs/manual/advanced/review/</link>
+      <link>/docs/manual/advanced/review/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/review/</guid>
+      <guid>/docs/manual/advanced/review/</guid>
       <description>检查标注的特殊模式允许你指向帧中包含错误的对象或区域.&#xA;质检 要进行质检，您需要将任务页面上所需作业的阶段更改为验证,并分配一个用户来进行检查 现在工作会以不同的质检界面打开. 你也可以使用顶部面板的界面切换器切换到质检模式.&#xA;质检模式是一种UI模式，有一个特殊的问题工具，你可以使用它来识别对象 或框架中的区域，并描述问题.&#xA;要做到这一点，首先点击控制侧边栏上的打开一个问题图标:&#xA;然后单击框架中的一个位置以突出显示该位置或通过按住鼠标左键突出显示该区域并描述问题. 要选择一个对象，右键单击它并选择打开一个问题或选择几个快速问题之一 该对象或区域将以红色阴影显示.&#xA;创建的问题将出现在工作区和对象侧边栏的问题选项卡中.&#xA;标记所有问题后，保存注释，打开菜单并选择作业状态拒收或完成.&#xA;质检之后，其他用户将能够看到问题，对每个问题发表评论，并将问题的状态更改为`已解决``.&#xA;问题修复后，从菜单中选择完成作业来完成任务. 或者，您可以在任务页面中将阶段切换到验收.&#xA;解决问题 质检之后，你可以在对象侧栏的问题选项卡中看到这些问题.&#xA;你可以使用问题标签上的箭头来导航包含问题的帧.&#xA;在工作区中，您可以单击问题，您可以发送关于该问题的评论, 或者，如果问题已解决，则将状态更改为解决. 你可以通过点击删除来移除这个问题 (如果您的帐户有适当的权限).&#xA;如果在一个地方创建了几个问题，您可以通过将鼠标悬停在问题上并滚动鼠标滚轮来访问它们.&#xA;如果问题解决了，您可以通过单击重新打开按钮重新打开问题.</description>
     </item>
     <item>
       <title>形状分组</title>
-      <link>//localhost:1313/docs/manual/advanced/shape-grouping/</link>
+      <link>/docs/manual/advanced/shape-grouping/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/docs/manual/advanced/shape-grouping/</guid>
+      <guid>/docs/manual/advanced/shape-grouping/</guid>
       <description>这个特性允许我们对多个形状进行分组.&#xA;You may use the Group Shapes button or shortcuts:&#xA;ctrl+G -在组模式下开始选择/结束选择&#xA;Esc -关闭群组模式&#xA;Shift+G -重置选中形状的分组&#xA;你可以选择形状，点击它们或者选择一个区域.&#xA;分组后的形状将在转储标注中包含group_id.&#xA;也可以将颜色分布从实例(默认)切换到组. 你必须切换通过组颜色分类复选框.&#xA;没有group_id的形状将以白色高亮显示.</description>
     </item>
   </channel>
