@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/src",
+	"sourceRoot": "/home/image/projects/imagetrain/site",
 	"sources": [
 		"themes/docsy/assets/scss/main.scss",
 		"themes/docsy/node_modules/bootstrap/scss/_functions.scss",
