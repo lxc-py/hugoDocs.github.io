@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "自训练系统的操作文档",
   "main": "index.js",
+  "dependencies": {
+    "docsy": "file:themes/docsy"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
