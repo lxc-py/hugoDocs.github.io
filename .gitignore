@@ -1,2 +1,5 @@
 # Ignore all the installed packages
 node_modules
+
+# Ignore site public
+public
