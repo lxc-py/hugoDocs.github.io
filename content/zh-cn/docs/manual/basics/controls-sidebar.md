@@ -19,10 +19,10 @@ description: '标注工具的控件侧栏上可用功能的概述.'
 ## 变焦
 
 **变焦块** - 包含图像缩放工具.
-|图标 |Description |
+|图标 |描述 |
 |-- |-- |
-|![](/images/image151.jpg)|`Fit image`- fits image into the workspace size.<br/> Shortcut - double click on an image|
-|![](/images/image166.jpg)|`Select a region of interest`- zooms in on a selected region.<br/> You can use this tool to quickly zoom in on a specific part of the frame.|
+|![](/images/image151.jpg)|`调整图像`- 将图像调整为工作空间大小.<br/> 快捷方式-双击图像|
+|![](/images/image166.jpg)|`选择感兴趣的区域`- 放大选定区域.<br/> 您可以使用此工具快速放大框架的特定部分.|
 
 ---
 

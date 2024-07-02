@@ -2,6 +2,7 @@
 title: '使用文档'
 linkTitle: '使用文档'
 description: '欢迎查阅宜美智自训练系统文档.'
+no_list: true
 menu: {main: {weight: 20}}
 weight: 20
 ---
@@ -27,13 +28,18 @@ weight: 20
 
 <!--lint disable maximum-line-length-->
 
-{{% blocks/feature icon="fa-book" title="[使用手册](/docs/manual/)" %}}
+{{% blocks/feature icon="fa-book" title="[标注使用手册](/docs/manual/)" %}}
 
 本节包含简单用户和高级用户的文档。
 
 {{% /blocks/feature %}}
 
 
+{{% blocks/feature icon="fa-server" title="[训练教程](/docs/train/)" %}}
+
+本节包含训练步骤教程， 仅供超级用户使用.
+
+{{% /blocks/feature %}}
 
 {{< /blocks/section >}}
 
