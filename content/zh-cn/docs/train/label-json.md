@@ -16,87 +16,201 @@ description: '各类模型标签Json源码.含AOI与AVI'
 ```json
 [
   {
-    "name": "铜渣",
-    "color": "#e2b11a",
-    "type": "polygon",
-    "attributes": []
-  },
-  {
-    "name": "胶膜",
-    "color": "#a67616",
-    "type": "polygon",
-    "attributes": []
-  },
-  {
-    "name": "杂物轻",
-    "color": "#1eccae",
-    "type": "polygon",
-    "attributes": []
-  },
-  {
-    "name": "杂物重",
-    "color": "#3218c3",
-    "type": "polygon",
-    "attributes": []
-  },
-  {
-    "name": "缺口",
-    "color": "#b71280",
-    "type": "polygon",
-    "attributes": []
-  },
-  {
-    "name": "毛边微短",
-    "color": "#ff6037",
-    "type": "polygon",
+    "name": "板损",
+    "color": "#33ddff",
+    "type": "any",
     "attributes": []
   },
   {
     "name": "刮花",
-    "color": "#86d7b3",
-    "type": "polygon",
+    "color": "#fa3253",
+    "type": "any",
     "attributes": []
   },
   {
-    "name": "板损",
-    "color": "#d12044",
-    "type": "polygon",
+    "name": "铜渣",
+    "color": "#34d1b7",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "微短",
+    "color": "#ff007c",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "杂物_重",
+    "color": "#ff6037",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "杂物_轻",
+    "color": "#ddff33",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "缺口",
+    "color": "#24b353",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "针孔",
+    "color": "#b83df5",
+    "type": "any",
     "attributes": []
   },
   {
     "name": "缺铜",
-    "color": "#5b95d1",
-    "type": "polygon",
+    "color": "#00a9ff",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "油墨_蓝",
+    "color": "#ffff00",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "油墨_绿",
+    "color": "#007fff",
+    "type": "any",
     "attributes": []
   },
   {
     "name": "异色",
-    "color": "#957724",
-    "type": "polygon",
+    "color": "#2b00ff",
+    "type": "any",
     "attributes": []
   },
   {
-    "name": "氧化",
-    "color": "#a48836",
-    "type": "polygon",
-    "attributes": []
-  },
-  {
-    "name": "油墨绿",
-    "color": "#5c4ac8",
-    "type": "polygon",
-    "attributes": []
-  },
-  {
-    "name": "油墨蓝",
-    "color": "#ab9fde",
-    "type": "polygon",
+    "name": "胶膜",
+    "color": "#fd2b00",
+    "type": "any",
     "attributes": []
   },
   {
     "name": "气泡",
-    "color": "#71689f",
-    "type": "polygon",
+    "color": "#fc00fc",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "板边",
+    "color": "#007eff",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "氧化_轻",
+    "color": "#a40287",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "氧化_重",
+    "color": "#a61d02",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短_重",
+    "color": "#33ddff",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短1",
+    "color": "#33ddff",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短2",
+    "color": "#fa3253",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短3",
+    "color": "#34d1b7",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短4",
+    "color": "#ff007c",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短5",
+    "color": "#ff6037",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短6",
+    "color": "#ddff33",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短7",
+    "color": "#24b353",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短8",
+    "color": "#b83df5",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短9",
+    "color": "#00a9ff",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短10",
+    "color": "#fcbf03",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短11",
+    "color": "#b91787",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "氧化",
+    "color": "#220a9c",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边单",
+    "color": "#0fcd0f",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "毛边微短12",
+    "color": "#a797fb",
+    "type": "any",
+    "attributes": []
+  },
+  {
+    "name": "夹角铜渣",
+    "color": "#aaf0d1",
+    "type": "any",
     "attributes": []
   }
 ]
