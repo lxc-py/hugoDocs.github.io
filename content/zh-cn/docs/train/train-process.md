@@ -1,7 +1,7 @@
 ---
 title: '训练步骤'
 linkTitle: '训练步骤'
-weight: 8
+weight: 5
 description: '从创建项目到训练到验证的训练步骤.'
 ---
 
